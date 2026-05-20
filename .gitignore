@@ -1,0 +1,53 @@
+# 本地參考資料 / 案件原始檔，不進版控
+00_reference/*
+# 但 INDEX.md 是專案文件，保留在版控
+!00_reference/INDEX.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.local
+
+# 套件 / 建置
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 測試 / 覆蓋率
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# 模型 / 大型輸出（鋼筋讀圖會產生的中間檔）
+*.pkl
+*.pt
+*.pth
+*.onnx
+outputs/
+runs/
+logs/
