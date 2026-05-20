@@ -39,6 +39,10 @@ tags: [meta, glossary]
 | 術語 | 定義 | 備註 |
 |---|---|---|
 | `<模組名 / 階段名>` | `<一句話定義>` | |
+| 非目標（Non-Goals） | 本專案明確「不做」的事，分為範圍外 / 延後 / 明確拒絕 / 責任邊界四類 | 見 10_problem/non_goals.md |
+| 驗收條件（Acceptance Criteria） | PRD 成功指標的可驗證二元條件（達 / 未達） | 見 10_problem/acceptance.md |
+| 測試金字塔（Test Pyramid） | 將測試依「單元 → 整合 → 端對端」分層，數量由下而上遞減的策略 | 見 45_test_plan/test_strategy.md |
+| 追溯矩陣（Traceability Matrix） | 把 PRD 指標 → ADR → EXP → 實作 → 驗收測試 串成可追溯的一張表 | 見 99_meta/traceability.md |
 
 ## 3. 縮寫
 
@@ -47,6 +51,8 @@ tags: [meta, glossary]
 | ADR | Architecture Decision Record | 架構決策紀錄 | 用於 30_decisions/ |
 | PRD | Product Requirements Document | 產品需求文件 | 見 10_problem/PRD.md |
 | EXP | Experiment | 實驗 | 用於 60_experiments/ |
+| DoD | Definition of Done | 完成定義 | 見 10_problem/acceptance.md |
+| TDD | Test-Driven Development | 測試驅動開發 | 對應 45_test_plan/ 與 50_implementation/tests/ |
 <!-- TODO: 後續新增的縮寫補在此處 -->
 
 ## 4. 待釐清

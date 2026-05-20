@@ -24,17 +24,20 @@ updated: 2026-05-20
 
 ## 目錄導覽
 
-本專案依「問題定義 → 探索 → 決策 → 設計 → 實作」的 SOP 編排：
+本專案依「問題定義 → 探索 → 方法 → 決策 → 設計 → 測試規畫 → 實作 → 實驗 → 結案」的 SOP 編排：
 
 | 目錄 | 用途 |
 |---|---|
-| [10_problem/](10_problem/) | 問題定義：PRD、stakeholders |
+| [10_problem/](10_problem/) | 問題定義：PRD、stakeholders、non_goals、acceptance |
 | [20_discovery/](20_discovery/) | 探索筆記：依本專案的問題定義展開 |
+| [25_approach/](25_approach/) | 候選方法比較：options、tradeoffs |
 | [30_decisions/](30_decisions/) | ADR（Architecture Decision Records） |
 | [40_design/](40_design/) | 技術設計：tech_spec、schema、pipeline、prompts |
+| [45_test_plan/](45_test_plan/) | 測試規畫：strategy、fixtures、acceptance_tests |
 | [50_implementation/](50_implementation/) | 實作：src、tests、依賴與環境 |
 | [60_experiments/](60_experiments/) | 實驗紀錄：每個實驗一個資料夾 |
-| [99_meta/](99_meta/) | 慣例、術語、prompt log |
+| [70_closure/](70_closure/) | 結案與復盤：done_checklist、retrospective |
+| [99_meta/](99_meta/) | 慣例、術語、prompt log、traceability |
 
 > 文件慣例與 frontmatter 格式見 [99_meta/conventions.md](99_meta/conventions.md)。
 > 給 AI session 的工作規則見 [CLAUDE.md](CLAUDE.md)。

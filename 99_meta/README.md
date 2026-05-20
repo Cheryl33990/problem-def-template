@@ -16,6 +16,7 @@ tags: [meta, overview]
 | [conventions.md](conventions.md) | 專案慣例（命名、frontmatter、文件結構） |
 | [glossary.md](glossary.md) | 術語表 |
 | [prompt_log.md](prompt_log.md) | Prompt 歷史日誌（給人與 AI 復盤用） |
+| [traceability.md](traceability.md) | 追溯矩陣：PRD 指標 → ADR → EXP → 實作 → 驗收測試 |
 
 ## 角色定位
 

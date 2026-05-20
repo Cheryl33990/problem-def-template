@@ -19,7 +19,8 @@ tags: [meta, ai-collaboration]
 ## 1. 重要慣例
 
 ### 1.1 檔名規則
-- 階段資料夾以 `NN_kebab-name/` 命名，編號代表 SOP 階段（10→20→30→…）。
+- 階段資料夾以 `NN_kebab-name/` 命名，編號代表 SOP 階段
+  （主階段：10→20→30→40→50→60→99；中介階段：25→45→70）。
 - 文件採 `snake_case.md`；探索筆記前綴 `NN_` 表示閱讀順序。
 - ADR 採 `ADR-NNN-short-title.md`；實驗採 `EXP-NNN-short-title/`。
 
@@ -35,10 +36,13 @@ tags: [meta, ai-collaboration]
 在開始任何實作或設計變更前，請依序閱讀：
 
 1. [10_problem/PRD.md](10_problem/PRD.md) — 目前的問題定義與成功指標
-2. [30_decisions/](30_decisions/) 內**最新且 status 為 approved** 的 ADR
-3. [40_design/tech_spec.md](40_design/tech_spec.md) — 當前的技術設計
-4. [99_meta/conventions.md](99_meta/conventions.md) — 慣例與 frontmatter 規範
-5. [99_meta/glossary.md](99_meta/glossary.md) — 術語表
+2. [10_problem/acceptance.md](10_problem/acceptance.md) — 可驗證的 DoD（什麼算「做完」）
+3. [10_problem/non_goals.md](10_problem/non_goals.md) — 範圍邊界（什麼「不要做」）
+4. [30_decisions/](30_decisions/) 內**最新且 status 為 approved** 的 ADR
+5. [40_design/tech_spec.md](40_design/tech_spec.md) — 當前的技術設計
+6. [99_meta/conventions.md](99_meta/conventions.md) — 慣例與 frontmatter 規範
+7. [99_meta/glossary.md](99_meta/glossary.md) — 術語表
+8. [99_meta/traceability.md](99_meta/traceability.md) — 追溯矩陣（看清楚動到一個東西會牽動到哪）
 
 ## 3. 禁止事項
 

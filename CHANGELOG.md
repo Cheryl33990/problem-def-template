@@ -11,6 +11,29 @@ updated: 2026-05-20
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-20
+
+### Added
+- 新增三個中介階段資料夾，補強 SOP 的完整性：
+  - [25_approach/](25_approach/) — 候選方法比較（`options.md`、`tradeoffs.md`），承接 20_discovery 與 30_decisions 之間「為什麼選 A 不選 B」的過程紀錄
+  - [45_test_plan/](45_test_plan/) — 測試規畫（`test_strategy.md`、`fixtures.md`、`acceptance_tests/`），把驗收條件翻成可執行的測試規格，是 TDD 的源頭
+  - [70_closure/](70_closure/) — 結案與復盤（`done_checklist.md`、`retrospective.md`），讓專案能「乾淨關閉」並留下可復盤紀錄
+- 強化問題定義階段（10_problem/）：
+  - [10_problem/non_goals.md](10_problem/non_goals.md) — 非目標完整版（分類視角：範圍外 / 延後 / 明確拒絕 / 責任邊界）；PRD §5 改為摘要
+  - [10_problem/acceptance.md](10_problem/acceptance.md) — 把 PRD §4 成功指標翻成可驗證二元條件（Definition of Done）
+- 新增 [99_meta/traceability.md](99_meta/traceability.md) — 追溯矩陣，把 PRD 指標 → ADR → EXP → 實作 → 驗收測試串成一張表
+
+### Changed
+- [10_problem/PRD.md](10_problem/PRD.md) §4 與 §5 改為「摘要 + 連結到深入版」
+- [CLAUDE.md](CLAUDE.md) §1.1 階段編號規則涵蓋中介階段（25/45/70）；§2 必讀清單擴充至 8 項
+- [USAGE.md](USAGE.md) §2 初始化清單與 §4 結構速查同步更新
+- [README.md](README.md) 目錄導覽加入新資料夾
+- [99_meta/glossary.md](99_meta/glossary.md) 補上 DoD、TDD、非目標、驗收條件、測試金字塔、追溯矩陣等術語
+
+### Notes
+- 完整 SOP 流程：**10 → 20 → 25 → 30 → 40 → 45 → 50 → 60（穿插）→ 70**；99 為跨階段共用。
+- 所有新檔維持「skeleton + TODO 註解」原則，衍生者複製後依實際情境填入。
+
 ## [0.1.0] - 2026-05-20
 
 ### Added

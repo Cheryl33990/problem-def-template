@@ -48,6 +48,8 @@ grep -rn "<PROJECT_GOAL>" --include="*.md"
 ### 2.3 填入問題定義
 - [10_problem/PRD.md](10_problem/PRD.md) — 至少完成 §1 背景、§2 目標使用者、§4 成功指標
 - [10_problem/stakeholders.md](10_problem/stakeholders.md) — 至少列出 3 個關鍵角色
+- [10_problem/non_goals.md](10_problem/non_goals.md) — 列出範圍邊界（PRD §5 為摘要）
+- [10_problem/acceptance.md](10_problem/acceptance.md) — 把 PRD §4 成功指標翻成可驗證條件
 
 ### 2.4 規劃探索筆記
 進入 [20_discovery/](20_discovery/)：複製 `NN_template.md` 為 `01_<topic>.md`、`02_<topic>.md` 等，依本專案實際探索主題命名。同時更新 `20_discovery/README.md` 的內容表。
@@ -72,16 +74,21 @@ grep -rn "<PROJECT_GOAL>" --include="*.md"
 ## 4. 結構速查
 
 ```
-10_problem/   問題定義（PRD、stakeholders）
-20_discovery/ 探索筆記（一份一個主題）
-30_decisions/ ADR
-40_design/    技術設計（tech_spec + schema/pipeline/prompts 子目錄）
+10_problem/        問題定義（PRD、stakeholders、non_goals、acceptance）
+20_discovery/      探索筆記（一份一個主題）
+25_approach/       候選方法比較（options、tradeoffs）
+30_decisions/      ADR
+40_design/         技術設計（tech_spec + schema/pipeline/prompts 子目錄）
+45_test_plan/      測試規畫（strategy、fixtures、acceptance_tests）
 50_implementation/ 程式碼、測試
 60_experiments/    實驗紀錄（一個實驗一個資料夾）
-99_meta/      慣例、術語、prompt log
+70_closure/        結案與復盤（done_checklist、retrospective）
+99_meta/           慣例、術語、prompt log、traceability
 ```
 
 每個資料夾的 README.md 都有更詳細的角色定位。
+
+SOP 流程：**10 → 20 → 25 → 30 → 40 → 45 → 50 → 60（穿插）→ 70**；99 為跨階段共用。
 
 ---
 

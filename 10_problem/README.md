@@ -15,6 +15,8 @@ tags: [problem, overview]
 |---|---|
 | [PRD.md](PRD.md) | 產品需求文件：目標使用者、需求、成功指標、非目標 |
 | [stakeholders.md](stakeholders.md) | 利害關係人盤點與其關注點 |
+| [non_goals.md](non_goals.md) | 非目標完整版（分類視角）；PRD §5 為摘要 |
+| [acceptance.md](acceptance.md) | 驗收條件（DoD）：把 PRD §4 成功指標翻成可驗證的二元條件 |
 
 ## 何時更新
 
