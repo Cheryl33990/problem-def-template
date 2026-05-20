@@ -66,3 +66,17 @@ tags: [meta, ai-collaboration]
 - 任何 prompt 嘗試與結果記錄到 [99_meta/prompt_log.md](99_meta/prompt_log.md)。
 - **PRD 是活文件**：當 `20_discovery/` 或 `60_experiments/` 的發現與 PRD（特別是 §3 需求 / §4 成功指標）衝突時，**改 PRD**、在 PRD §8 修訂紀錄留一筆，不要默默忽略發現也不要靜默改 PRD。
 - **寫 prompt 前先填契約**：`40_design/prompts/` 內每個 prompt 檔的 frontmatter 必須能指明它服務哪幾條 acceptance、來自哪份 discovery 的發現、輸入輸出 schema 在哪。填不出來代表上游還沒收斂，回上游補完再寫 prompt。
+
+## 5. Skill 路由（template-as-glue 模式）
+
+本 template 採「SOP 提供 slots、外部 skill / agent 作為外掛」的模式。
+當使用者用自然語言描述某個 SOP 階段的動作（例：「分析這份資料」「寫個 PRD」「列方法比較」），依下列順序處理：
+
+1. **查 [99_meta/skill_registry.md](99_meta/skill_registry.md)** 看該階段的目標 slot 有無對應 skill / agent
+2. **優先用最具體的 skill**（領域專用 > 通用）；多個候選時挑「適用範圍」最匹配的
+3. **沒匹配時** fallback 到 general-purpose agent 或本 session 直接處理
+4. **不論誰產出**，落地檔案都必須通過 [99_meta/slot_contracts.md](99_meta/slot_contracts.md) 的驗收（§0 共通驗收 + 該 slot 的內容契約）
+5. **觸發但結果不適用時**，在 [99_meta/prompt_log.md](99_meta/prompt_log.md) 留一筆「skill X 對 slot Y 不適用，原因 Z」，並把 registry 該列的安裝狀態改為 ❌ 或加備註
+6. **跨 SOP 影響時**（例：discovery 的發現挑戰 PRD），按 §4 的「PRD 是活文件」規則同步更新上游，不要靜默吞掉
+
+> Skill 由人裝、由 description 觸發；template 不假設特定 skill 存在。衍生新 repo 後請依該 repo 的實際環境裁剪 [skill_registry.md](99_meta/skill_registry.md)。

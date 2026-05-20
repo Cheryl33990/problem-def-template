@@ -17,6 +17,8 @@ tags: [meta, overview]
 | [glossary.md](glossary.md) | 術語表 |
 | [prompt_log.md](prompt_log.md) | Prompt 歷史日誌（給人與 AI 復盤用） |
 | [traceability.md](traceability.md) | 追溯矩陣：PRD 指標 → ADR → EXP → 實作 → 驗收測試 |
+| [skill_registry.md](skill_registry.md) | Skill / agent 對照表：SOP 階段 ↔ 環境中可用的外部 skill |
+| [slot_contracts.md](slot_contracts.md) | 各 SOP 文件的填補契約集中索引（任何 skill 產出都依此驗收） |
 
 ## 角色定位
 

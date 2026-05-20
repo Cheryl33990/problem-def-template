@@ -14,13 +14,17 @@ updated: 2026-05-20
 ### Added
 - [40_design/prompts/_example.prompt.md](40_design/prompts/_example.prompt.md) — prompt 契約樣板（dummy），示範 frontmatter 四欄契約與內容結構五段。
 - [10_problem/PRD.md](10_problem/PRD.md) §8 修訂紀錄 — 把 PRD 從「一次寫死」改成可追溯的活文件。
+- [99_meta/skill_registry.md](99_meta/skill_registry.md) — SOP 階段 ↔ 外部 skill / agent 對照表。Template 提供初始通用候選；衍生 repo 後依該環境裁剪。
+- [99_meta/slot_contracts.md](99_meta/slot_contracts.md) — 各 SOP 文件的填補契約集中索引。任何 skill 產出都需通過此處驗收。
 
 ### Changed
 - [40_design/prompts/README.md](40_design/prompts/README.md) 完整改寫：明確訂出 prompt 檔的四欄必填契約（serves_acceptance / informed_by_discovery / input_schema / output_schema / known_failure_modes）、版本 bump 規則、命名規則、維護規則。
-- [CLAUDE.md](CLAUDE.md) §2 增加「編號是分類、不是執行順序」說明；§4 工作流程提醒新增「PRD 是活文件」與「寫 prompt 前先填契約」兩條原則。
+- [CLAUDE.md](CLAUDE.md) §2 增加「編號是分類、不是執行順序」說明；§4 工作流程提醒新增「PRD 是活文件」與「寫 prompt 前先填契約」兩條原則；新增 §5 Skill 路由原則（template-as-glue 模式）。
+- [99_meta/README.md](99_meta/README.md) 內容表加入 skill_registry 與 slot_contracts 兩項。
 
 ### Notes
 - 本次強化的核心張力：PRD 不該被資料挑戰後默默忽略；prompt 不該在問題與資料尚未收斂時就動筆寫。
+- 新增 template-as-glue 模式：template 提供 SOP slots，外部 skill / agent 作為外掛；不假設特定 skill 存在，由衍生 repo 的環境決定。
 
 ## [0.2.0] - 2026-05-20
 
