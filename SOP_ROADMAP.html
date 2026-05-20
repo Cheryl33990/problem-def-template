@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SOP 使用路線圖 — 遇到新問題，從這裡開始</title>
+<style>
+  :root {
+    --bg: #f7f8fa; --card: #fff; --ink: #1f2937; --muted: #6b7280; --line: #e5e7eb;
+    --accent: #0078d7; --accent-soft: #e6f1fb;
+    --green: #16a34a; --green-soft: #dcfce7;
+    --amber: #b45309; --amber-soft: #fef3c7;
+    --red: #b91c1c; --red-soft: #fee2e2;
+    --slate: #475569; --slate-soft: #f1f5f9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Microsoft JhengHei UI", "Microsoft JhengHei", "Segoe UI", -apple-system, Arial, sans-serif;
+    line-height: 1.65; font-size: 15px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 28px 24px 64px; }
+
+  header.cover {
+    background: linear-gradient(135deg, #475569 0%, #0078d7 100%);
+    color: #fff; padding: 32px 28px; border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(71,85,105,.2); margin-bottom: 24px;
+  }
+  header.cover h1 { margin: 0 0 6px; font-size: 26px; }
+  header.cover .sub { opacity: .92; font-size: 14px; }
+  header.cover .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; }
+  header.cover code { background: rgba(255,255,255,.18); color: #fff; padding: 1px 6px; border-radius: 4px; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 1px 2px rgba(15,23,42,.04);
+  }
+  section.card h2 {
+    margin: 0 0 14px; font-size: 18px; color: var(--accent);
+    border-left: 4px solid var(--accent); padding-left: 10px;
+  }
+  h3 { margin: 18px 0 8px; font-size: 15px; }
+  h4 { margin: 14px 0 6px; font-size: 14px; color: var(--slate); }
+  p, ul, ol { margin: 8px 0 12px; }
+  li { margin: 4px 0; }
+
+  code {
+    background: #f1f5f9; color: #0f172a; padding: 1px 6px; border-radius: 4px;
+    font-family: "Cascadia Code", Consolas, monospace; font-size: 13px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0; }
+  th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+  th { background: #f3f4f6; font-weight: 600; }
+
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 999px;
+          font-size: 12px; font-weight: 600; line-height: 1.7; white-space: nowrap; }
+  .pill.crit  { background: var(--red-soft);    color: var(--red); }
+  .pill.high  { background: var(--amber-soft);  color: var(--amber); }
+  .pill.med   { background: var(--accent-soft); color: var(--accent); }
+  .pill.low   { background: var(--slate-soft);  color: var(--slate); }
+  .pill.fixed { background: var(--green-soft);  color: var(--green); }
+
+  .callout { border-left: 4px solid var(--accent); background: var(--accent-soft);
+             padding: 12px 14px; border-radius: 0 8px 8px 0; color: #0c4a6e;
+             margin: 12px 0; font-size: 14px; }
+  .callout.ok   { border-left-color: var(--green); background: var(--green-soft); color: #14532d; }
+  .callout.warn { border-left-color: #d97706;      background: var(--amber-soft); color: #78350f; }
+  .callout.bad  { border-left-color: var(--red);   background: var(--red-soft);   color: #7f1d1d; }
+
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+  @media (max-width: 700px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+  .metric {
+    background: #f8fafc; border: 1px solid var(--line); border-radius: 8px;
+    padding: 14px; text-align: center;
+  }
+  .metric .v { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .metric .k { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .finding { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin: 12px 0; }
+  .finding header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap;
+                    background: transparent; padding: 0; border-radius: 0; box-shadow: none; color: inherit; }
+  .finding .title { font-weight: 700; font-size: 15px; }
+  .finding .where { color: var(--muted); font-size: 12.5px; }
+  .finding.p1 { border-color: #93c5fd; background: linear-gradient(180deg, #f0f9ff 0%, #fff 30%); }
+  .finding.p2 { border-color: #fcd34d; background: linear-gradient(180deg, #fffbeb 0%, #fff 30%); }
+  .finding.p3 { border-color: #6ee7b7; background: linear-gradient(180deg, #f0fdf4 0%, #fff 30%); }
+
+  .diagram {
+    background: #fafbfc; border: 1px dashed var(--line); border-radius: 10px;
+    padding: 18px; margin: 14px 0; text-align: center; overflow-x: auto;
+  }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+  /* Flow boxes */
+  .flow { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .flow .box {
+    min-width: 78px; padding: 10px 12px; border-radius: 10px;
+    border: 2px solid var(--accent); background: var(--accent-soft);
+    color: var(--accent); font-weight: 700; font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,120,215,.12);
+  }
+  .flow .box .sub { display: block; font-size: 10.5px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+  .flow .box.ok    { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+  .flow .box.warn  { border-color: var(--amber); background: var(--amber-soft); color: var(--amber); }
+  .flow .box.slate { border-color: var(--slate); background: var(--slate-soft); color: var(--slate); }
+  .flow .arrow { font-size: 18px; color: var(--slate); }
+
+  /* Timeline for SOP backbone */
+  .timeline { position: relative; padding-left: 32px; margin: 12px 0; }
+  .timeline::before { content: ''; position: absolute; left: 10px; top: 6px; bottom: 6px;
+                      width: 2px; background: var(--accent); }
+  .timeline .node { position: relative; margin: 12px 0; }
+  .timeline .node::before {
+    content: ''; position: absolute; left: -26px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline .num { font-size: 12px; color: var(--muted); font-weight: 700; font-family: Consolas, monospace; }
+  .timeline .title { font-weight: 600; font-size: 14px; }
+  .timeline .desc { font-size: 13px; color: var(--slate); margin-top: 2px; }
+
+  footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 12px; }
+
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: 100%; padding: 0; }
+    section.card { box-shadow: none; break-inside: avoid; }
+    header.cover { break-after: avoid; }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <h1>SOP 使用路線圖</h1>
+    <div class="sub">遇到新問題時，從這裡開始判斷該走哪條路</div>
+    <div class="meta">
+      <span><b>適用對象</b>：使用 <code>problem-def-template</code> 衍生新專案的人</span>
+      <span><b>日期</b>：2026-05-20</span>
+      <span><b>版本</b>：v0.2.0 對應</span>
+    </div>
+  </header>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>0. TL;DR</h2>
+    <p>
+      不論你對問題熟不熟，<b>最終都會走完整 SOP（10 → 70）</b>。差別只在「前期投資在哪」——
+      熟悉的人把時間花在 <code>10_problem</code> 把問題講清楚；
+      不熟悉的人把時間花在 <code>20_discovery</code> 把資料讀進去。
+      選錯起點不會壞事，但會繞遠路。
+    </p>
+    <div class="metric-grid">
+      <div class="metric"><div class="v">3</div><div class="k">起手路徑</div></div>
+      <div class="metric"><div class="v">9</div><div class="k">SOP 主階段</div></div>
+      <div class="metric"><div class="v">1</div><div class="k">共同結案點</div></div>
+      <div class="metric"><div class="v">5</div><div class="k">退路訊號</div></div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>1. 起手判斷樹</h2>
+    <p>拿到問題與手邊資料時，問自己這幾個問題：</p>
+    <div class="diagram">
+      <pre class="mermaid">
+graph TD
+  Start([遇到新問題<br/>手邊有資料]) --> Q1{你能描述：<br/>為什麼做、做什麼、<br/>給誰、怎麼算成功?}
+  Q1 -- 四個都答得出 --> P1[路徑 1<br/><b>PRD-first</b><br/>直接寫 10_problem/PRD.md]
+  Q1 -- 大方向有、<br/>細節要查 --> P2[路徑 2<br/><b>Hybrid</b><br/>PRD 草稿 + Discovery 補]
+  Q1 -- 完全是新領域<br/>資料是原電 --> P3[路徑 3<br/><b>Discovery-first</b><br/>先進 20_discovery 讀]
+  P1 --> Main[主線 SOP<br/>25 → 30 → 40 → 45 → 50 → 60 → 70]
+  P2 --> Main
+  P3 --> Main
+  Main --> End([結案<br/>70_closure])
+
+  classDef start fill:#e6f1fb,stroke:#0078d7,color:#0c4a6e;
+  classDef path1 fill:#dbeafe,stroke:#0078d7,color:#1e40af;
+  classDef path2 fill:#fef3c7,stroke:#b45309,color:#78350f;
+  classDef path3 fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef main fill:#f1f5f9,stroke:#475569,color:#1f2937;
+  classDef ed fill:#475569,stroke:#1f2937,color:#fff;
+  class Start start;
+  class P1 path1;
+  class P2 path2;
+  class P3 path3;
+  class Main main;
+  class End ed;
+      </pre>
+      <div class="caption">圖 1：起手判斷樹——熟悉度決定第一站</div>
+    </div>
+    <div class="callout">
+      <b>關鍵原則：</b>三條路最終都會匯流到同一條主線。選錯起點不會壞掉你的專案，但會讓你前 1-2 週做白工。
+      所以開工前花 5 分鐘評估熟悉度，比「直接做」更有效率。
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>2. 三條路徑速覽</h2>
+    <div class="diagram">
+      <div class="flow">
+        <div class="box">
+          路徑 1
+          <span class="sub">PRD-first</span>
+        </div>
+        <div class="arrow">／</div>
+        <div class="box warn">
+          路徑 2
+          <span class="sub">Hybrid</span>
+        </div>
+        <div class="arrow">＼</div>
+        <div class="box ok">
+          路徑 3
+          <span class="sub">Discovery-first</span>
+        </div>
+        <div class="arrow">→</div>
+        <div class="box slate">
+          25_approach
+          <span class="sub">起匯流</span>
+        </div>
+      </div>
+      <div class="caption">圖 2：三條路徑都在 25_approach 之前匯流</div>
+    </div>
+
+    <table>
+      <tr>
+        <th style="width:14%;">路徑</th>
+        <th style="width:22%;">適用情境</th>
+        <th style="width:18%;">第一站</th>
+        <th style="width:18%;">最大風險</th>
+        <th style="width:28%;">預期前期投資</th>
+      </tr>
+      <tr>
+        <td><span class="pill med">路徑 1</span><br/>PRD-first</td>
+        <td>問題已清楚<br/>使用者明確<br/>資料是「支撐」用途</td>
+        <td><code>10_problem/PRD.md</code></td>
+        <td>不熟卻自以為熟，<br/>PRD 變成猜題</td>
+        <td>1-2 天填完 PRD<br/>+ non_goals + acceptance</td>
+      </tr>
+      <tr>
+        <td><span class="pill high">路徑 2</span><br/>Hybrid</td>
+        <td>大方向清楚<br/>細節靠資料釐清<br/>常見的中間情境</td>
+        <td><code>10_problem/PRD.md</code><br/>（含很多 §7 開放問題）</td>
+        <td>PRD §7 越列越長<br/>但遲遲不開始 discovery</td>
+        <td>2 天 PRD 草稿<br/>+ 3-4 天 discovery 補資訊</td>
+      </tr>
+      <tr>
+        <td><span class="pill fixed">路徑 3</span><br/>Discovery-first</td>
+        <td>對領域陌生<br/>資料是「原料」<br/>需要讀完才能定義問題</td>
+        <td><code>99_meta/data_inventory.md</code><br/>+ <code>20_discovery/</code></td>
+        <td>discovery 沒收斂，<br/>讀到失焦</td>
+        <td>1 週 discovery + glossary<br/>之後再寫 PRD</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>3. 三條路徑的詳細展開</h2>
+
+    <div class="finding p1">
+      <header>
+        <span class="pill med">路徑 1</span>
+        <span class="title">PRD-first（熟悉路線）</span>
+        <span class="where">你能描述「為什麼做、做什麼、給誰、怎麼算成功」</span>
+      </header>
+
+      <h4>Today（30 分鐘）</h4>
+      <ul>
+        <li>替換 <code>&lt;PROJECT_NAME&gt;</code> 與 <code>&lt;PROJECT_GOAL&gt;</code> placeholder</li>
+        <li>更新 <code>README.md</code> / <code>CLAUDE.md</code> / <code>CHANGELOG.md</code> 三檔開頭</li>
+        <li>把支撐用資料路徑記到 <code>99_meta/data_inventory.md</code>（如有）</li>
+      </ul>
+
+      <h4>Week 1：填問題定義</h4>
+      <ul>
+        <li><code>10_problem/PRD.md</code> §1-7 全部填完（§7 開放問題若超過 5 條，請考慮退回路徑 2）</li>
+        <li><code>10_problem/stakeholders.md</code> 至少列 3 個關鍵角色</li>
+        <li><code>10_problem/non_goals.md</code> 4 大類至少各列 1 條</li>
+        <li><code>10_problem/acceptance.md</code> PRD §4 每條成功指標都有對應驗收條件</li>
+      </ul>
+
+      <h4>Week 2 起：進主線</h4>
+      <ul>
+        <li>跳過 <code>20_discovery/</code>（或留作「補充參考」），直接進 <code>25_approach/</code></li>
+        <li>把 PRD 內已知的候選方法寫進 <code>options.md</code>、對比寫進 <code>tradeoffs.md</code></li>
+        <li>結論變 ADR，進 <code>30_decisions/</code></li>
+      </ul>
+
+      <div class="callout warn">
+        <b>退回訊號：</b>填 PRD 時發現自己每寫一段就要查資料、§7 開放問題列越來越長、
+        對「使用者實際工作流程」說不出具體場景——那你其實在路徑 2，請坦白承認。
+      </div>
+    </div>
+
+    <div class="finding p2">
+      <header>
+        <span class="pill high">路徑 2</span>
+        <span class="title">Hybrid（半熟路線）</span>
+        <span class="where">大方向清楚、細節要從資料釐清</span>
+      </header>
+
+      <h4>Today（30 分鐘）</h4>
+      <ul>
+        <li>同路徑 1 的 Today 三件事</li>
+        <li>把資料納管到 <code>99_meta/data_inventory.md</code></li>
+        <li>寫「暫時版」<code>&lt;PROJECT_GOAL&gt;</code>——之後 discovery 會改</li>
+      </ul>
+
+      <h4>Day 2-3：PRD 草稿（容忍空格）</h4>
+      <ul>
+        <li><code>10_problem/PRD.md</code> 把 §1-4 能寫多少寫多少</li>
+        <li><b>§7 開放問題大量列出</b>——每條都標「預計由哪份探索筆記回答」</li>
+        <li>PRD 維持 <code>status: draft</code>，不要急著升 in-review</li>
+      </ul>
+
+      <h4>Day 4-7：Discovery 補資訊</h4>
+      <ul>
+        <li>依 §7 開放問題在 <code>20_discovery/</code> 建對應筆記（一條問題不一定一份筆記，可合併）</li>
+        <li>每讀完一輪同步更新 <code>99_meta/glossary.md</code> 新術語</li>
+        <li>每份筆記寫到 <code>對下一階段的影響</code> 一段時，回頭把對應的 PRD §7 開放問題消掉</li>
+      </ul>
+
+      <h4>Week 2：PRD 升級</h4>
+      <ul>
+        <li>§7 開放問題清空（或剩 1-2 個「實驗驗證」型問題進 <code>60_experiments/</code>）</li>
+        <li>PRD <code>status</code> 升 in-review，找 stakeholder 對齊</li>
+        <li>進 <code>25_approach/</code>，主線繼續</li>
+      </ul>
+
+      <div class="callout">
+        <b>路徑 2 的甜蜜點：</b>大多數真實專案都是這條。PRD 與 discovery 互相滋養——
+        PRD 給 discovery 方向感，discovery 給 PRD 真實感。
+      </div>
+    </div>
+
+    <div class="finding p3">
+      <header>
+        <span class="pill fixed">路徑 3</span>
+        <span class="title">Discovery-first（不熟路線）</span>
+        <span class="where">對領域陌生，資料是原料</span>
+      </header>
+
+      <h4>Today（30 分鐘）</h4>
+      <ul>
+        <li>確認資料夾在 <code>.gitignore</code> 內（公司內部資料尤其重要）</li>
+        <li>建 <code>99_meta/data_inventory.md</code>：是什麼、來源、機敏性、路徑</li>
+        <li>替換 placeholder；<code>&lt;PROJECT_GOAL&gt;</code> 寫「暫時版」（給 discovery 一個方向感）</li>
+      </ul>
+
+      <h4>Day 1：規劃 4 份起手筆記</h4>
+      <ul>
+        <li><code>20_discovery/01_corpus_overview.md</code> — 全貌：幾類、結構共通 / 差異、品質</li>
+        <li><code>20_discovery/02_domain_concepts.md</code> — 領域術語（同步餵 glossary）</li>
+        <li><code>20_discovery/03_current_workflow.md</code> — 現況人工流程、痛點</li>
+        <li><code>20_discovery/04_problem_candidates.md</code> — 提煉「可能的問題定義」候選</li>
+        <li>同步更新 <code>20_discovery/README.md</code> 的目錄表</li>
+      </ul>
+
+      <h4>Day 2-5：系統性讀資料</h4>
+      <ul>
+        <li><b>不要照順序硬讀</b>——依筆記主題挑著讀（01 翻每份只看封面 / 目錄；02 細讀代表性 3-5 份）</li>
+        <li>每份筆記四段結構：<i>問題 → 方法 → 發現 → 對下一階段的影響</i></li>
+        <li>每讀完一輪都餵 <code>99_meta/glossary.md</code> 新術語</li>
+      </ul>
+
+      <h4>Day 6-7：寫 PRD（這時候才寫）</h4>
+      <ul>
+        <li>從 <code>04_problem_candidates.md</code> 選 1-2 個 candidate 寫 PRD §1-4</li>
+        <li>被排除的 candidate 進 <code>non_goals.md</code></li>
+        <li>PRD <code>status: in-review</code>，找 stakeholder 對齊後升 approved</li>
+      </ul>
+
+      <h4>Week 2 起：進主線</h4>
+      <ul>
+        <li>進 <code>25_approach/</code> 比較候選方法</li>
+        <li>後續流程同三條路</li>
+      </ul>
+
+      <div class="callout warn">
+        <b>退回訊號：</b>discovery 寫了一週還沒收斂、04_problem_candidates 列不出 2 個 candidate，
+        通常是<b>方向感太弱</b>——回頭跟 stakeholder 對一次「大概想解什麼樣的問題」，
+        把那個粗略方向當錨點再繼續 discovery。
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>4. 主線骨幹：三條路匯流後的 SOP</h2>
+    <p>不論從哪條路徑進來，後半段都走同一條主線：</p>
+
+    <div class="diagram" style="text-align:left;">
+      <div class="timeline">
+        <div class="node">
+          <div class="num">10_problem/</div>
+          <div class="title">問題定義</div>
+          <div class="desc">PRD + stakeholders + non_goals + acceptance。產出物：可驗證的 DoD。</div>
+        </div>
+        <div class="node">
+          <div class="num">20_discovery/</div>
+          <div class="title">探索筆記</div>
+          <div class="desc">依主題寫筆記，提煉事實。路徑 1 可跳過；路徑 2/3 的主場。</div>
+        </div>
+        <div class="node">
+          <div class="num">25_approach/</div>
+          <div class="title">候選方法比較</div>
+          <div class="desc">options 列方法、tradeoffs 用一致維度評。產出物：給 ADR 用的對比結論。</div>
+        </div>
+        <div class="node">
+          <div class="num">30_decisions/</div>
+          <div class="title">ADR</div>
+          <div class="desc">把 25 的結論寫成決策。封存後不修改——要改新增 ADR + 標 deprecated。</div>
+        </div>
+        <div class="node">
+          <div class="num">40_design/</div>
+          <div class="title">技術設計</div>
+          <div class="desc">tech_spec + schema + pipeline + prompts。依 ADR 具體化。</div>
+        </div>
+        <div class="node">
+          <div class="num">45_test_plan/</div>
+          <div class="title">測試規畫</div>
+          <div class="desc">test_strategy + fixtures + acceptance_tests。<b>先於</b>程式碼存在（TDD）。</div>
+        </div>
+        <div class="node">
+          <div class="num">50_implementation/</div>
+          <div class="title">實作</div>
+          <div class="desc">寫程式 + 跑測試。對齊 40 設計；不一致時先改設計再改實作。</div>
+        </div>
+        <div class="node">
+          <div class="num">60_experiments/</div>
+          <div class="title">實驗（穿插）</div>
+          <div class="desc">隨時驗證假設。不是線性階段——任何階段需要時都可開 EXP-NNN。</div>
+        </div>
+        <div class="node">
+          <div class="num">70_closure/</div>
+          <div class="title">結案與復盤</div>
+          <div class="desc">done_checklist 全勾 + retrospective 寫完。專案才算完成。</div>
+        </div>
+      </div>
+      <div class="caption">圖 3：主線骨幹九階段（99_meta 為跨階段共用）</div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>5. 何時退回上一階段</h2>
+    <p>線性流程是理想；真實工作會有「發現前一階段沒做好」的時刻。下面是常見退路：</p>
+
+    <table>
+      <tr>
+        <th>觸發訊號</th>
+        <th>退到哪</th>
+        <th>具體動作</th>
+      </tr>
+      <tr>
+        <td>寫 PRD 寫到一半，§7 開放問題越列越多、§1-4 寫不下去</td>
+        <td><code>20_discovery/</code></td>
+        <td>把問題轉成探索筆記主題，補完再回頭升 PRD</td>
+      </tr>
+      <tr>
+        <td>25_approach options 寫不出 2 個合理候選</td>
+        <td><code>20_discovery/</code></td>
+        <td>對「可行性」做專題探索筆記，補完再回 25</td>
+      </tr>
+      <tr>
+        <td>30_decisions ADR 寫到一半發現方法選錯</td>
+        <td><code>25_approach/</code></td>
+        <td>重新評估 tradeoffs（不要硬寫一個自己不信的 ADR）</td>
+      </tr>
+      <tr>
+        <td>45_test_plan 寫測試規格時，發現驗收條件根本無法測</td>
+        <td><code>10_problem/acceptance.md</code></td>
+        <td>修驗收條件（可能連帶修 PRD §4），再回 45</td>
+      </tr>
+      <tr>
+        <td>50_implementation 實作到一半發現設計撐不起需求</td>
+        <td><code>30_decisions/</code> + <code>40_design/</code></td>
+        <td>新增 ADR 改路線 + 修 tech_spec（不要在 src/ 偷偷改設計）</td>
+      </tr>
+    </table>
+
+    <div class="callout">
+      <b>退路不是失敗，是 SOP 的設計功能。</b>frontmatter 的 <code>status</code> 與 ADR 的「新增不修改」原則，
+      就是讓你能誠實退回去而不破壞紀錄。
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>6. 橫切原則（全程適用，不限階段）</h2>
+
+    <div class="callout">
+      <b>① glossary 隨時更新。</b>新術語先進 <code>99_meta/glossary.md</code> 再被引用——
+      不要等寫完一份筆記才補。命名一旦分歧、後續所有文件都要對齊。
+    </div>
+
+    <div class="callout">
+      <b>② 60_experiments 隨時穿插。</b>不是線性階段——當你想驗證「某個假設真的成立嗎」，
+      開一個 EXP-NNN 跑。實驗結論再回頭影響 ADR 或 PRD。
+    </div>
+
+    <div class="callout warn">
+      <b>③ ADR 不修改只新增。</b><code>30_decisions/</code> 已 approved / archived 的 ADR 不可直接動，
+      要改新增一份、舊的標 <code>deprecated</code> 並用 <code>related</code> 互相連結。
+      （CLAUDE.md §3 第一條禁令）
+    </div>
+
+    <div class="callout warn">
+      <b>④ 所有 <code>.md</code> 必有 frontmatter。</b>三必填（title / status / updated）+ 三選填（owner / tags / related）。
+      變更檔案時更新 <code>updated:</code> 為當天日期。
+    </div>
+
+    <div class="callout bad">
+      <b>⑤ 原始素材不進 git。</b>公司內部 PDF、機敏資料、大型輸入檔——
+      路徑記在 <code>99_meta/data_inventory.md</code>，檔案本體放 <code>.gitignore</code> 排除的路徑。
+    </div>
+
+    <div class="callout ok">
+      <b>⑥ 追溯矩陣是健康度檢查。</b><code>99_meta/traceability.md</code> 任何空白欄都是斷鏈警示——
+      表示某條 PRD 指標沒有對應實作或測試。結案前必須全部對齊。
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>7. 常見錯誤與對策</h2>
+
+    <table>
+      <tr>
+        <th style="width:30%;">錯誤</th>
+        <th style="width:35%;">為什麼會發生</th>
+        <th style="width:35%;">對策</th>
+      </tr>
+      <tr>
+        <td>不熟卻硬走 PRD-first</td>
+        <td>急著「開始做事」、覺得 discovery 在拖時間</td>
+        <td>承認 §7 開放問題列太長就退到 discovery；PRD 寫得不準會浪費後面所有階段</td>
+      </tr>
+      <tr>
+        <td>discovery 沒收斂</td>
+        <td>沒有「暫時版 PROJECT_GOAL」當錨點，讀資料失焦</td>
+        <td>路徑 3 的 Today 一定要寫暫時版 GOAL；發現方向錯了再改</td>
+      </tr>
+      <tr>
+        <td>跳過 25_approach 直接寫 ADR</td>
+        <td>覺得「方法很明顯就一種」</td>
+        <td>強迫自己列 1 個被否決方案；只有 1 個合理方法時可省 25，但 ADR 的 Alternatives Considered 要寫</td>
+      </tr>
+      <tr>
+        <td>實作完才寫測試</td>
+        <td>覺得測試是「補上去」的東西</td>
+        <td>45_test_plan/acceptance_tests/ 的規格要先於程式碼存在；用 spec / impl / passing 三段狀態追蹤</td>
+      </tr>
+      <tr>
+        <td>專案做完不寫 retrospective</td>
+        <td>「下個專案要開始了」</td>
+        <td>done_checklist 全勾後 1-2 週內必寫；對 template 的改進建議寫進 retrospective §7</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ============================================= -->
+  <section class="card">
+    <h2>8. 何時這份路線圖會過時</h2>
+    <p>這份路線圖反映 <code>v0.2.0</code> 的 template 結構。下列情況請更新本檔：</p>
+    <ul>
+      <li>新增 / 移除階段資料夾（例如未來如果加 <code>15_research</code> 或 <code>55_review</code>）</li>
+      <li>主線匯流點改變（例如三條路在更早或更晚的階段才匯流）</li>
+      <li>橫切原則新增（例如未來加「risks register 隨時更新」）</li>
+      <li>跑過一個真實專案後發現「描述的工作流程」與「實際的工作流程」有落差</li>
+    </ul>
+    <div class="callout ok">
+      <b>本檔的本質是「使用說明」，不是「規範」。</b>
+      規範在 <code>CLAUDE.md</code> 與 <code>99_meta/conventions.md</code>，本檔的角色是把規範翻成「我下一步該做什麼」。
+    </div>
+  </section>
+
+  <footer>
+    產出時間：2026-05-20 · 對應 template 版本：v0.2.0 · by Claude Code
+  </footer>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor:       '#e6f1fb',
+      primaryTextColor:   '#0c4a6e',
+      primaryBorderColor: '#0078d7',
+      lineColor:          '#475569',
+      secondaryColor:     '#f1f5f9',
+      tertiaryColor:      '#fef3c7',
+      fontFamily:         '"Microsoft JhengHei UI", "Segoe UI", sans-serif'
+    }
+  });
+</script>
+</body>
+</html>

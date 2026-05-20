@@ -10,6 +10,8 @@ tags: [meta, template-usage]
 本 repo 是一個 **GitHub Template**，提供「問題定義 → 探索 → 決策 → 設計 → 實作」SOP 的文件骨架。
 適用於需要把研究、探索、決策過程留下可復盤紀錄的專案——不限於工程，也適合資料分析、產品探索、學術專案。
 
+> **不確定從哪開始？** 先打開 [SOP_ROADMAP.html](SOP_ROADMAP.html) — 依「對問題的熟悉度」判斷該走哪條路徑（PRD-first / Hybrid / Discovery-first），並對應每條路徑的 Today / Week 1 / Week 2 動作。
+
 ---
 
 ## 1. 衍生新專案

@@ -41,6 +41,7 @@ updated: 2026-05-20
 
 > 文件慣例與 frontmatter 格式見 [99_meta/conventions.md](99_meta/conventions.md)。
 > 給 AI session 的工作規則見 [CLAUDE.md](CLAUDE.md)。
+> **第一次使用？** 看 [SOP_ROADMAP.html](SOP_ROADMAP.html) — 依熟悉度判斷該走哪條路徑、每條路徑前 1-2 週的具體動作。
 
 ---
 
