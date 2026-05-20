@@ -1,20 +1,24 @@
 ---
-title: REBAR_READER
+title: <PROJECT_NAME>
 status: draft
 updated: 2026-05-20
 ---
 
-# REBAR_READER
+# `<PROJECT_NAME>`
 
-PDF 鋼筋圖紙自動讀取系統。
+> **這是從 [problem-def-template](https://github.com/Cheryl33990/problem-def-template) 衍生的專案。**
+> 使用方式見 [USAGE.md](USAGE.md)；新建後請把本段與 `<PROJECT_NAME>` placeholder 換成你的專案名。
+
+`<PROJECT_GOAL — 一句話描述本專案要解的問題>`
 
 ---
 
 ## 專案目標
 
-從結構工程 PDF 圖紙中自動辨識並抽取鋼筋配筋資訊，產出可被下游工程作業使用的結構化資料。
-
-> 詳細需求與成功指標見 [10_problem/PRD.md](10_problem/PRD.md)。
+<!-- TODO: 此處用 3-5 句話展開專案目標。
+     需回答：要解什麼問題？目標使用者是誰？成功的樣子是什麼？
+     詳細需求與成功指標見 [10_problem/PRD.md](10_problem/PRD.md)。
+     完成後將 status 從 draft 改為 in-review -->
 
 ---
 
@@ -24,9 +28,8 @@ PDF 鋼筋圖紙自動讀取系統。
 
 | 目錄 | 用途 |
 |---|---|
-| [00_reference/](00_reference/) | 原始 PDF 案件參考資料（不進版控） |
 | [10_problem/](10_problem/) | 問題定義：PRD、stakeholders |
-| [20_discovery/](20_discovery/) | 探索筆記：PDF 樣態、技術可行性、資料模型 |
+| [20_discovery/](20_discovery/) | 探索筆記：依本專案的問題定義展開 |
 | [30_decisions/](30_decisions/) | ADR（Architecture Decision Records） |
 | [40_design/](40_design/) | 技術設計：tech_spec、schema、pipeline、prompts |
 | [50_implementation/](50_implementation/) | 實作：src、tests、依賴與環境 |

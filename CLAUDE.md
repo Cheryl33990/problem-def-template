@@ -10,7 +10,11 @@ tags: [meta, ai-collaboration]
 
 ## 0. 專案目標（一句話）
 
-> 從 PDF 鋼筋圖紙自動讀取結構配筋資訊的系統。
+<!-- TODO: 此處用一句話寫出本專案的目標。
+     範例格式：「從 <輸入> 自動 <動作>，產出 <輸出> 的系統。」
+     完成後將本檔的 status 從 draft 改為 approved -->
+
+> `<PROJECT_GOAL>`
 
 ## 1. 重要慣例
 
@@ -40,10 +44,8 @@ tags: [meta, ai-collaboration]
 
 - ❌ **不要直接改 `30_decisions/` 內已封存（status: approved / archived）的 ADR**。
   - 要修正請新增一份 ADR，將舊 ADR 的 status 改為 `deprecated`，並用 `related` 互相連結。
-- ❌ **不要動 `00_reference/` 內的既有資料夾**（這些是原始案件 PDF，唯讀）。
-  - 只能讀取、不可改名、不可移動。
 - ❌ **不要繞過 frontmatter**。新增任何 `.md` 都必須有完整 frontmatter。
-- ❌ **不要把 `00_reference/` 加進 git**（已在 `.gitignore`）。
+- ❌ **不要把原始素材 / 大型輸入檔加進 git**（建議放在 `.gitignore` 排除的路徑下）。
 - ❌ **不要從 memory 引入未在當前對話討論過的概念**。memory 是輔助、不是事實來源。
 - ❌ **不要刪除 TODO 註解**，除非該 TODO 對應的內容真的已完成。
 

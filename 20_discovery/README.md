@@ -11,12 +11,15 @@ tags: [discovery, overview]
 
 ## 內容
 
-| 檔案 | 探索主題 |
+| 檔案 | 用途 |
 |---|---|
-| [01_pdf_analysis.md](01_pdf_analysis.md) | 6 份 reference PDF 的差異與共通點 |
-| [02_tekla_reference.md](02_tekla_reference.md) | TEKLA 底稿的參考價值與限制 |
-| [03_tech_feasibility.md](03_tech_feasibility.md) | OCR / Vision LLM / 規則式三條路徑可行性 |
-| [04_data_model_study.md](04_data_model_study.md) | 梁配筋的資料本體分析 |
+| [NN_template.md](NN_template.md) | 探索筆記範本。新增筆記時複製此檔，改名為 `NN_<topic>.md`（NN 為兩位數順序） |
+
+> 範例命名（依本專案的探索主題依序排列）：
+> - `01_<input_data_analysis>.md` — 輸入資料的差異與共通點
+> - `02_<adjacent_artifact>.md` — 相鄰製品 / 既有資料的參考價值
+> - `03_<tech_feasibility>.md` — 候選技術路徑的可行性
+> - `04_<data_model>.md` — 核心領域物件的資料本體分析
 
 ## 探索筆記寫作原則
 

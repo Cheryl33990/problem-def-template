@@ -14,8 +14,8 @@ tags: [design, overview]
 | 檔案 / 資料夾 | 用途 |
 |---|---|
 | [tech_spec.md](tech_spec.md) | 整體技術規格：架構圖、模組劃分、資料流 |
-| [schema/](schema/) | 資料結構定義（梁配筋等領域物件的 schema） |
-| [pipeline/](pipeline/) | 處理管線設計（PDF → 結構化資料的各階段） |
+| [schema/](schema/) | 資料結構定義（領域物件的 schema） |
+| [pipeline/](pipeline/) | 處理管線設計（輸入 → 結構化資料的各階段） |
 | [prompts/](prompts/) | 生產用 prompt 的最終版（與 60_experiments/ 內探索性 prompt 區分） |
 
 ## 設計原則

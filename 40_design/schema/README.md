@@ -7,7 +7,7 @@ tags: [design, schema]
 
 # 40_design/schema/
 
-本資料夾收錄**資料結構定義**——本系統處理的領域物件（梁、柱、配筋表等）的 schema。
+本資料夾收錄**資料結構定義**——本系統處理的領域物件的 schema。
 
 ## 角色定位
 
@@ -18,10 +18,9 @@ tags: [design, schema]
 
 <!-- TODO: 此處列出本資料夾將有的 schema 檔案
      建議檔名規則：
-       - beam.schema.json（梁）
-       - rebar.schema.json（鋼筋）
-       - drawing.schema.json（圖紙層級）
-     參考 [[../../20_discovery/04_data_model_study]] 對梁配筋的分析
+       - <object>.schema.json（每個核心領域物件一份）
+       - <container>.schema.json（容器 / 上層集合）
+     參考 20_discovery/ 內對核心領域物件的分析
      完成後將 status 從 draft 改為 in-review -->
 
 ## 維護規則

@@ -7,7 +7,7 @@ tags: [design, pipeline]
 
 # 40_design/pipeline/
 
-本資料夾收錄**處理管線**設計——從 PDF 輸入到結構化輸出之間，每個階段的職責、介面、與順序。
+本資料夾收錄**處理管線**設計——從輸入素材到結構化輸出之間，每個階段的職責、介面、與順序。
 
 ## 角色定位
 
@@ -19,7 +19,7 @@ tags: [design, pipeline]
 <!-- TODO: 此處列出本資料夾將有的設計文件
      建議結構：
        - 00_overview.md — 整條管線的階段圖
-       - 01_pre_processing.md — PDF 前處理（轉圖、切頁、降噪）
+       - 01_pre_processing.md — 輸入前處理（依領域定義：如格式轉換、切分、降噪）
        - 02_extraction.md — 抽取階段
        - 03_postprocess.md — 後處理（正規化、驗證）
      參考 [[../tech_spec]] §3 §4

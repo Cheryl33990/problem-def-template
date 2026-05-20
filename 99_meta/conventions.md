@@ -48,11 +48,11 @@ related: [ADR-001, EXP-003]           # 相關文件 ID（ADR、EXP、其他 .md
 
 ```yaml
 ---
-title: 梁配筋資料模型
+title: <核心領域物件>資料模型
 status: in-review
 updated: 2026-05-20
-owner: jenny890808
-tags: [design, schema, beam]
+owner: <name>
+tags: [design, schema]
 related: [ADR-002, EXP-001]
 ---
 ```
