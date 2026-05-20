@@ -33,9 +33,14 @@ tags: [meta, ai-collaboration]
 
 ## 2. 動手前必讀清單
 
+> **重要原則：編號是分類、不是執行順序。**
+> 真實流程通常是「資料盤點 → 初版 PRD → 探索 → 用發現挑戰 PRD → 修 PRD → ...」的迴圈。
+> 對問題不熟時，先做 `20_discovery/` 的一輪資料盤點，再回頭寫 `10_problem/PRD.md` 是合理的。
+> 不確定走哪條路徑時看 [SOP_ROADMAP.html](SOP_ROADMAP.html)。
+
 在開始任何實作或設計變更前，請依序閱讀：
 
-1. [10_problem/PRD.md](10_problem/PRD.md) — 目前的問題定義與成功指標
+1. [10_problem/PRD.md](10_problem/PRD.md) — 目前的問題定義與成功指標（**活文件**，見 §4 與 PRD §8 修訂紀錄）
 2. [10_problem/acceptance.md](10_problem/acceptance.md) — 可驗證的 DoD（什麼算「做完」）
 3. [10_problem/non_goals.md](10_problem/non_goals.md) — 範圍邊界（什麼「不要做」）
 4. [30_decisions/](30_decisions/) 內**最新且 status 為 approved** 的 ADR
@@ -59,3 +64,5 @@ tags: [meta, ai-collaboration]
 - 多步任務用 TodoWrite 追蹤進度。
 - 變更檔案後更新該檔案的 `updated:` 欄位為今日日期。
 - 任何 prompt 嘗試與結果記錄到 [99_meta/prompt_log.md](99_meta/prompt_log.md)。
+- **PRD 是活文件**：當 `20_discovery/` 或 `60_experiments/` 的發現與 PRD（特別是 §3 需求 / §4 成功指標）衝突時，**改 PRD**、在 PRD §8 修訂紀錄留一筆，不要默默忽略發現也不要靜默改 PRD。
+- **寫 prompt 前先填契約**：`40_design/prompts/` 內每個 prompt 檔的 frontmatter 必須能指明它服務哪幾條 acceptance、來自哪份 discovery 的發現、輸入輸出 schema 在哪。填不出來代表上游還沒收斂，回上游補完再寫 prompt。

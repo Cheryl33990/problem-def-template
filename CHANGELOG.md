@@ -11,6 +11,17 @@ updated: 2026-05-20
 
 ## [Unreleased]
 
+### Added
+- [40_design/prompts/_example.prompt.md](40_design/prompts/_example.prompt.md) — prompt 契約樣板（dummy），示範 frontmatter 四欄契約與內容結構五段。
+- [10_problem/PRD.md](10_problem/PRD.md) §8 修訂紀錄 — 把 PRD 從「一次寫死」改成可追溯的活文件。
+
+### Changed
+- [40_design/prompts/README.md](40_design/prompts/README.md) 完整改寫：明確訂出 prompt 檔的四欄必填契約（serves_acceptance / informed_by_discovery / input_schema / output_schema / known_failure_modes）、版本 bump 規則、命名規則、維護規則。
+- [CLAUDE.md](CLAUDE.md) §2 增加「編號是分類、不是執行順序」說明；§4 工作流程提醒新增「PRD 是活文件」與「寫 prompt 前先填契約」兩條原則。
+
+### Notes
+- 本次強化的核心張力：PRD 不該被資料挑戰後默默忽略；prompt 不該在問題與資料尚未收斂時就動筆寫。
+
 ## [0.2.0] - 2026-05-20
 
 ### Added

@@ -5,6 +5,7 @@ updated: 2026-05-20
 # owner:
 # tags: [requirements]
 # related: []
+# 注意：本檔為活文件。每次修訂後更新 updated:，並在 §8 修訂紀錄 append 一列。
 ---
 
 # PRD — `<PROJECT_NAME>`
@@ -75,3 +76,21 @@ updated: 2026-05-20
 <!-- TODO: 此處列尚未有答案、需要在 20_discovery/ 或 60_experiments/ 解的問題
      格式：
        - [ ] 問題 — 預計由哪份探索筆記/實驗回答 -->
+
+## 8. 修訂紀錄（revision_log）
+
+> **PRD 是活文件**。每次因為 `20_discovery/` 或 `60_experiments/` 的發現而修改 §3 需求 / §4 成功指標 / §5 非目標 / §6 約束時，**必須**在此留一筆。
+>
+> 規則：
+> - 不要靜默修改 PRD。被資料/實驗挑戰是預期的事，紀錄這個過程比假裝一次到位重要。
+> - 「觸發來源」欄位請指到具體檔案的段落（例：`20_discovery/03_tech_feasibility.md §4`）。
+> - 同一天的多次小修可合併為一筆。
+> - 改完同步更新 frontmatter 的 `updated:` 欄位。
+
+| 版本 | 日期 | 變更摘要 | 觸發來源 |
+|---|---|---|---|
+| v0.1 | YYYY-MM-DD | 初版（資料盤點前的假設） | — |
+<!-- TODO: 後續每次修訂在這裡 append 一列。範例：
+| v0.2 | 2026-MM-DD | §4 指標 #2 從 "≤ 60s" 放寬為 "≤ 90s"；新增 §3 需求 R-08（中英混排處理） | 20_discovery/03_tech_feasibility.md §4 發現 |
+| v0.3 | 2026-MM-DD | 把「自動審核」移到 §5 non-goal | 60_experiments/EXP-002 結論 |
+-->
