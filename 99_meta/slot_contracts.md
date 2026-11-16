@@ -10,7 +10,7 @@ tags: [meta, contracts, slots]
 > 本檔是**索引**：把散落在各階段 README 與檔案內 TODO 註解中的「該被填成什麼樣」契約集中起來，供 skill / agent / 本 session 統一參考。
 > 任何 skill 產出的內容，不論來源，都必須通過此處列出的驗收標準。
 >
-> 對應的可用 skill 見 [skill_registry.md](skill_registry.md)；路由規則見 [CLAUDE.md §5](../CLAUDE.md)。
+> 對應的可用 skill 見 [skill_registry.md](skill_registry.md)；路由規則見 [AGENTS.md §5](../AGENTS.md)。
 
 ---
 
@@ -26,21 +26,24 @@ tags: [meta, contracts, slots]
 | status 值 | 限 draft / in-review / approved / archived / deprecated | [conventions.md §1.3](conventions.md) |
 | updated | 每次內容變動同步更新為當日日期 | [conventions.md §1.1](conventions.md) |
 | 術語 | 使用 [glossary.md](glossary.md) 既有術語；新術語先補進 glossary | [conventions.md §4](conventions.md) |
-| TODO 註解 | 內容真填上後才能刪該 TODO；未完成不可靜默移除 | [CLAUDE.md §3](../CLAUDE.md) |
+| TODO 註解 | 內容真填上後才能刪該 TODO；未完成不可靜默移除 | [AGENTS.md §3](../AGENTS.md) |
 
 ---
 
 ## 1. `10_problem/` — 問題定義
 
+以下完整性要求是正式實作前對本輪適用內容的要求，不是使用者開始對話的門檻。探索期允許未知與暫定；AI 依 [WORKFLOW](../WORKFLOW.md) 協助形成定義，使用者不需先填表。未知不是 N/A。
+
 ### 1.1 `PRD.md`
 
 | 欄位/段落 | 必填? | 內容契約 |
 |---|---|---|
+| §0 釐清紀錄 | ✅ | 原始描述、事實／假設／未知、各項成熟度與來源／確認紀錄 |
 | §1 背景 | ✅ | 痛點 + 現況 + 為什麼現在做（3-5 句） |
 | §2 目標使用者 | ✅ | 具體角色 + 介入時點；對應 `stakeholders.md` |
 | §3 需求 | ⚠️ 可分批 | 至少先有 MUST 一組；SHOULD/MAY 可延後 |
-| §4 成功指標 | ✅ | 至少 1 條、可量測；每條編號（被 acceptance / traceability 引用） |
-| §5 非目標 | ✅ | 3-5 條摘要；完整版見 `non_goals.md` |
+| §4 成功指標 | ✅ | 正式實作前至少確認 1 條、可觀察並可驗證；未知門檻先探索，不編造數值；每條編號（被 acceptance / traceability 引用） |
+| §5 非目標 | ✅ | 按實際需要由 AI 協助提案並確認；完整版見 `non_goals.md` |
 | §6 約束 | ✅ | 至少列出已知的硬性約束（時程/預算/技術/法規） |
 | §7 開放問題 | ✅ | 未知數列出 + 指到預計回答的 discovery / experiment |
 | §8 修訂紀錄 | ✅ | 至少 v0.1 一列；之後每次修訂 append（含觸發來源） |
@@ -51,6 +54,7 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
+| 逐項記未知／暫定／已確認及依據，正式實作採用的條目須有確認紀錄 |
 | 每條驗收條件用 `AC-NN` 編號 |
 | 每條對應 PRD §4 的指標編號（多對一 / 一對多皆可） |
 | 每條為**二元可判定**（可寫成 pytest assert / 人工 checklist） |

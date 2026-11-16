@@ -12,6 +12,9 @@ updated: 2026-11-16
 
 ## 開始使用
 
+**只要能描述困擾或期待就能開始。** AI 會協助釐清問題、範圍與成功條件；不知道時可先探索。使用者不必預先寫完整 PRD 或數字門檻。見 [WORKFLOW](WORKFLOW.md) 的模糊目標流程。
+
+
 先看 [START_HERE.md](START_HERE.md)，用精簡流程處理一個問題；需要完整專案結構時再看 [USAGE.md](USAGE.md)。GitHub 衍生入口若未提供「Use this template」，可先複製檔案到新 repo；本文件不假設模板設定已啟用。
 
 [合成示例](examples/meeting-notes.md)展示填寫方式，[PILOT.md](PILOT.md)定義真實試跑與紀錄方式。
@@ -39,6 +42,6 @@ updated: 2026-11-16
 
 ## 維護入口
 
-- [文件契約](99_meta/slot_contracts.md)、[慣例](99_meta/conventions.md)、[AI 工作規則](CLAUDE.md)。
+- [文件契約](99_meta/slot_contracts.md)、[慣例](99_meta/conventions.md)、[AI 工作規則](AGENTS.md)。
 - [改善進度](IMPROVEMENT_PLAN.md)、[變更紀錄](CHANGELOG.md)。
 - 本 repo 維護模板；衍生後依自己的問題改寫 PRD 與 AI 專案目標。
