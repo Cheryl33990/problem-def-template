@@ -1,7 +1,7 @@
 ---
 title: Definition of Done 檢查清單
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [closure, dod, checklist]
 # related: [acceptance]
 ---
@@ -9,9 +9,9 @@ tags: [closure, dod, checklist]
 # Definition of Done 檢查清單
 
 本清單把 [10_problem/acceptance.md](../10_problem/acceptance.md) §4「結案閘門」展開為**逐項可勾選**的檢查表。
-**全部勾選**才能宣告專案完成。
+**適用項目全部勾選**、完成復盤後才能宣告結案。
 
-> 規則：每項勾選後填「驗證方式」欄（誰、何時、怎麼確認）。空白勾選等於沒勾。
+> 規則：每項勾選後填「驗證方式」欄（誰、何時、怎麼確認）。空白勾選等於沒勾。不適用項目填 N/A、理由與確認人；不可空白略過。未通過的 AC 須列為未完成，或先經 PRD 修訂移出本次範圍，不可直接視為通過。
 
 ---
 
@@ -24,7 +24,7 @@ tags: [closure, dod, checklist]
 
 ## 2. 探索階段（20_discovery/）
 
-- [ ] 所有 `NN_*.md` 探索筆記 `status` ≥ `in-review` — 驗證：<!-- TODO -->
+- [ ] 所有已使用的探索筆記已審閱（不含未使用範本） — 驗證：<!-- TODO -->
 - [ ] 探索結論若被採用，已升級為 ADR — 驗證：<!-- TODO -->
 
 ## 3. 方法選擇階段（25_approach/）
@@ -77,6 +77,11 @@ tags: [closure, dod, checklist]
 - [ ] `USAGE.md`（若衍生自 template）已決定保留或刪除
 
 ---
+
+## 11. 復盤與最終結案
+
+- [ ] 上述適用項目已完成，已記錄驗收結果與未解風險
+- [ ] `retrospective.md` 已完成；改善事項有負責人與下一步
 
 ## 結案聲明
 

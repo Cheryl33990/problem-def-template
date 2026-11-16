@@ -1,7 +1,7 @@
 ---
 title: USAGE — 如何使用本 Template
 status: approved
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [meta, template-usage]
 ---
 
@@ -13,6 +13,10 @@ tags: [meta, template-usage]
 > **不確定從哪開始？** 先打開 [SOP_ROADMAP.html](SOP_ROADMAP.html) — 依「對問題的熟悉度」判斷該走哪條路徑（PRD-first / Hybrid / Discovery-first），並對應每條路徑的 Today / Week 1 / Week 2 動作。
 
 ---
+
+## 0. 先選規模
+
+第一次使用先走 [START_HERE.md](START_HERE.md) 的精簡路徑；本檔為完整初始化參考。角色依實際情境列出，不需湊人數。
 
 ## 1. 衍生新專案
 
@@ -49,7 +53,7 @@ grep -rn "<PROJECT_GOAL>" --include="*.md"
 
 ### 2.3 填入問題定義
 - [10_problem/PRD.md](10_problem/PRD.md) — 至少完成 §1 背景、§2 目標使用者、§4 成功指標
-- [10_problem/stakeholders.md](10_problem/stakeholders.md) — 至少列出 3 個關鍵角色
+- [10_problem/stakeholders.md](10_problem/stakeholders.md) — 列出實際關鍵角色
 - [10_problem/non_goals.md](10_problem/non_goals.md) — 列出範圍邊界（PRD §5 為摘要）
 - [10_problem/acceptance.md](10_problem/acceptance.md) — 把 PRD §4 成功指標翻成可驗證條件
 
@@ -93,6 +97,8 @@ grep -rn "<PROJECT_GOAL>" --include="*.md"
 SOP 流程：**10 → 20 → 25 → 30 → 40 → 45 → 50 → 60（穿插）→ 70**；99 為跨階段共用。
 
 ---
+
+> 完整流程可依 START_HERE 裁剪；N/A 必須附理由。編號是分類，探索與實驗可反覆穿插。
 
 ## 5. 回饋與貢獻
 

@@ -1,7 +1,7 @@
 ---
 title: Claude Code 專案規則
 status: approved
-updated: 2026-05-20
+updated: 2026-11-16
 owner: jenny890808
 tags: [meta, ai-collaboration]
 ---
@@ -33,6 +33,8 @@ tags: [meta, ai-collaboration]
 
 ## 2. 動手前必讀清單
 
+先依 [START_HERE.md](START_HERE.md) 選擇精簡或完整流程。工具名稱是候選，使用前確認當前環境；不依賴特定 AI 產品。
+
 > **重要原則：編號是分類、不是執行順序。**
 > 真實流程通常是「資料盤點 → 初版 PRD → 探索 → 用發現挑戰 PRD → 修 PRD → ...」的迴圈。
 > 對問題不熟時，先做 `20_discovery/` 的一輪資料盤點，再回頭寫 `10_problem/PRD.md` 是合理的。
@@ -61,7 +63,7 @@ tags: [meta, ai-collaboration]
 ## 4. 工作流程提醒
 
 - 動手前先列計畫，等使用者確認再執行。
-- 多步任務用 TodoWrite 追蹤進度。
+- 多步任務使用目前環境可用的工作清單追蹤進度。
 - 變更檔案後更新該檔案的 `updated:` 欄位為今日日期。
 - 任何 prompt 嘗試與結果記錄到 [99_meta/prompt_log.md](99_meta/prompt_log.md)。
 - **PRD 是活文件**：當 `20_discovery/` 或 `60_experiments/` 的發現與 PRD（特別是 §3 需求 / §4 成功指標）衝突時，**改 PRD**、在 PRD §8 修訂紀錄留一筆，不要默默忽略發現也不要靜默改 PRD。

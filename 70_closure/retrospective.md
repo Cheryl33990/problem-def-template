@@ -1,7 +1,7 @@
 ---
 title: 專案復盤
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [closure, retrospective]
 # owner:
 # related: []
@@ -11,7 +11,7 @@ tags: [closure, retrospective]
 
 本文件記錄專案結案後的**復盤**——做對的、卡住的、假設驗證、下次想換的。
 
-> 寫作時機：done_checklist.md 全勾後 1-2 週內，記憶仍清晰時。
+> 寫作時機：done_checklist.md §1–10 適用項目完成後、最終結案簽署前，記憶仍清晰時。
 > 寫作精神：對未來有用比對過去公平更重要；誠實記錄失誤，目的是讓下一個專案少踩雷。
 
 ---

@@ -1,68 +1,40 @@
 ---
-title: <PROJECT_NAME>
-status: draft
-updated: 2026-05-20
+title: problem-def-template
+status: in-review
+updated: 2026-11-16
 ---
 
-# `<PROJECT_NAME>`
+# problem-def-template
 
-> **這是從 [problem-def-template](https://github.com/Cheryl33990/problem-def-template) 衍生的專案。**
-> 使用方式見 [USAGE.md](USAGE.md)；新建後請把本段與 `<PROJECT_NAME>` placeholder 換成你的專案名。
+繁體中文的問題解析與探索模板：留下問題、證據、方案選擇、假設驗證與結果，讓自己或下一個協作者能接手。
 
-`<PROJECT_GOAL — 一句話描述本專案要解的問題>`
+**目前是文件模板，尚未完成真實案例可用性驗證。** 不需要安裝 Python 或啟動服務。
 
----
+## 開始使用
 
-## 專案目標
+先看 [START_HERE.md](START_HERE.md)，用精簡流程處理一個問題；需要完整專案結構時再看 [USAGE.md](USAGE.md)。GitHub 衍生入口若未提供「Use this template」，可先複製檔案到新 repo；本文件不假設模板設定已啟用。
 
-<!-- TODO: 此處用 3-5 句話展開專案目標。
-     需回答：要解什麼問題？目標使用者是誰？成功的樣子是什麼？
-     詳細需求與成功指標見 [10_problem/PRD.md](10_problem/PRD.md)。
-     完成後將 status 從 draft 改為 in-review -->
+[合成示例](examples/meeting-notes.md)展示填寫方式，[PILOT.md](PILOT.md)定義真實試跑與紀錄方式。
 
----
+## 目錄
 
-## 目錄導覽
-
-本專案依「問題定義 → 探索 → 方法 → 決策 → 設計 → 測試規畫 → 實作 → 實驗 → 結案」的 SOP 編排：
-
-| 目錄 | 用途 |
+| 位置 | 用途 |
 |---|---|
-| [10_problem/](10_problem/) | 問題定義：PRD、stakeholders、non_goals、acceptance |
-| [20_discovery/](20_discovery/) | 探索筆記：依本專案的問題定義展開 |
-| [25_approach/](25_approach/) | 候選方法比較：options、tradeoffs |
-| [30_decisions/](30_decisions/) | ADR（Architecture Decision Records） |
-| [40_design/](40_design/) | 技術設計：tech_spec、schema、pipeline、prompts |
-| [45_test_plan/](45_test_plan/) | 測試規畫：strategy、fixtures、acceptance_tests |
-| [50_implementation/](50_implementation/) | 實作：src、tests、依賴與環境 |
-| [60_experiments/](60_experiments/) | 實驗紀錄：每個實驗一個資料夾 |
-| [70_closure/](70_closure/) | 結案與復盤：done_checklist、retrospective |
-| [99_meta/](99_meta/) | 慣例、術語、prompt log、traceability |
+| 10_problem | PRD、角色、範圍、AC 驗收條件 |
+| 20_discovery | 探索問題、方法、證據與影響 |
+| 25_approach | 候選方案與比較 |
+| 30_decisions | 重大決策 ADR |
+| 40_design | 技術設計、介面與 prompt |
+| 45_test_plan | AC 測試規格與驗證方式 |
+| 50_implementation | 選用的程式與測試骨架，目前無可執行系統 |
+| 60_experiments | 隨時穿插的假設驗證 |
+| 70_closure | 完成清單與復盤 |
+| 99_meta | 慣例、工具候選、契約、資料盤點與追溯 |
 
-> 文件慣例與 frontmatter 格式見 [99_meta/conventions.md](99_meta/conventions.md)。
-> 給 AI session 的工作規則見 [CLAUDE.md](CLAUDE.md)。
-> **第一次使用？** 看 [SOP_ROADMAP.html](SOP_ROADMAP.html) — 依熟悉度判斷該走哪條路徑、每條路徑前 1-2 週的具體動作。
+編號是分類，探索、PRD 與實驗會反覆修訂。不適用欄位填 N/A 與理由，不必為填滿文件創造工作。
 
----
+## 維護入口
 
-## 快速開始
-
-<!-- TODO: 此處待 50_implementation/ 有實際程式碼後補上
-     需包含：環境需求（Python 版本）、安裝步驟、最小執行範例
-     參考 50_implementation/README.md
-     完成後將 status 從 draft 改為 in-review -->
-
-```bash
-# 安裝
-# cd 50_implementation
-# pip install -r requirements.txt
-
-# 執行（範例）
-# python -m src.main <input.pdf>
-```
-
----
-
-## 變更紀錄
-
-見 [CHANGELOG.md](CHANGELOG.md)。
+- [文件契約](99_meta/slot_contracts.md)、[慣例](99_meta/conventions.md)、[AI 工作規則](CLAUDE.md)。
+- [改善進度](IMPROVEMENT_PLAN.md)、[變更紀錄](CHANGELOG.md)。
+- 本 repo 維護模板；衍生後依自己的問題改寫 PRD 與 AI 專案目標。
