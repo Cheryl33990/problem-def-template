@@ -1,7 +1,7 @@
 ---
 title: PRD — <PROJECT_NAME>
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 # owner:
 # tags: [requirements]
 # related: []
@@ -41,7 +41,7 @@ updated: 2026-05-20
 
 > 本節列「指標」（要達成什麼）；可驗證的「驗收條件」（怎麼算達成）見 [acceptance.md](acceptance.md)。
 
-<!-- TODO: 此處列至少三項可量化的成功指標，並編號（後續會被 acceptance.md 與 traceability.md 引用）
+<!-- TODO: 此處列至少一項可量化的成功指標，並編號（後續會被 acceptance.md 與 traceability.md 引用）
      範例（請依實際情境替換）：
        - 指標 #1：主要任務的準確率 ≥ X%（定義見 99_meta/glossary.md）
        - 指標 #2：單位處理時間 ≤ Y

@@ -1,7 +1,7 @@
 ---
 title: 追溯矩陣（Traceability Matrix）
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [meta, traceability]
 # related: [PRD, acceptance]
 ---
@@ -16,16 +16,16 @@ tags: [meta, traceability]
 
 ## 1. 主表：PRD 成功指標 → 全鏈追溯
 
-| PRD 指標 # | 指標摘要 | 對應 ADR | 對應方法 | 對應 EXP | 對應實作模組 | 對應驗收測試 | 狀態 |
-|---|---|---|---|---|---|---|---|
-| 1 | <!-- 摘要 --> | <!-- ADR-NNN --> | <!-- 25_approach 內方法名 --> | <!-- EXP-NNN --> | <!-- 50_implementation/src/X --> | <!-- 45_test_plan/acceptance_tests/spec_001 --> | <!-- spec / impl / passing --> |
-| 2 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
-| 3 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
+| PRD 指標 # | 指標摘要 | AC ID | 對應 ADR | 對應方法 | 對應 EXP | 對應實作模組 | 對應驗收測試 | 狀態 |
+|---|---|---|---|---|---|---|---|---|
+| 1 | <!-- 摘要 --> | <!-- AC-01 --> | <!-- ADR-NNN --> | <!-- 25_approach 內方法名 --> | <!-- EXP-NNN --> | <!-- 50_implementation/src/X --> | <!-- 45_test_plan/acceptance_tests/AC-01.md --> | <!-- spec / impl / passing --> |
+| 2 | <!-- TODO --> | <!-- AC-02 --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
+| 3 | <!-- TODO --> | <!-- AC-03 --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
 
 <!-- TODO: 此表每加一條 PRD 指標或一條 ADR 就要更新
      原則：
        - 任何一欄空白都是「斷鏈」——表示這條指標還沒有對應的實作或驗證
-       - 結案時所有欄位都應有對應，且狀態為 passing
+       - 結案時適用欄位都應有對應；ADR、EXP、實作不適用時填 N/A 並說明理由，且狀態為 passing
      完成後將 status 從 draft 改為 in-review -->
 
 ---
@@ -48,7 +48,7 @@ tags: [meta, traceability]
 | <!-- EXP-001 --> | <!-- TODO --> | <!-- TODO --> | <!-- 證實 / 推翻 / 部分 --> | <!-- ADR-NNN / PRD §X --> |
 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
 
-> 用途：實驗結論對後續決策的影響應在此體現。沒有 ADR / PRD 變動的實驗結論，要思考是否真的「結束」了。
+> 用途：實驗結論對後續決策的影響應在此體現。若結論支持維持現況，記錄無需變動的理由即可。
 
 ---
 

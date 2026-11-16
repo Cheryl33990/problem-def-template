@@ -1,7 +1,7 @@
 ---
 title: 變更紀錄
 status: approved
-updated: 2026-05-20
+updated: 2026-11-16
 ---
 
 # Changelog
@@ -11,14 +11,21 @@ updated: 2026-05-20
 
 ## [Unreleased]
 
+### 2026-11-16 文件一致性與首次使用
+- 統一 AC-NN、驗收規格命名及實驗三件組，拆開驗收與最終結案。
+- 工具清單改為待確認候選；補資料盤點入口與 N/A 理由規則。
+- 重寫模板首頁，加入 START_HERE、合成示例、PILOT 與改善進度。
+- 真實案例成效待驗證，未新增應用程式或自動化。
+
+
 ### Added
-- [40_design/prompts/_example.prompt.md](40_design/prompts/_example.prompt.md) — prompt 契約樣板（dummy），示範 frontmatter 四欄契約與內容結構五段。
+- [40_design/prompts/_example.prompt.md](40_design/prompts/_example.prompt.md) — prompt 契約樣板（dummy），示範 frontmatter 五欄契約與內容結構五段。
 - [10_problem/PRD.md](10_problem/PRD.md) §8 修訂紀錄 — 把 PRD 從「一次寫死」改成可追溯的活文件。
 - [99_meta/skill_registry.md](99_meta/skill_registry.md) — SOP 階段 ↔ 外部 skill / agent 對照表。Template 提供初始通用候選；衍生 repo 後依該環境裁剪。
 - [99_meta/slot_contracts.md](99_meta/slot_contracts.md) — 各 SOP 文件的填補契約集中索引。任何 skill 產出都需通過此處驗收。
 
 ### Changed
-- [40_design/prompts/README.md](40_design/prompts/README.md) 完整改寫：明確訂出 prompt 檔的四欄必填契約（serves_acceptance / informed_by_discovery / input_schema / output_schema / known_failure_modes）、版本 bump 規則、命名規則、維護規則。
+- [40_design/prompts/README.md](40_design/prompts/README.md) 完整改寫：明確訂出 prompt 檔的五欄必填契約（serves_acceptance / informed_by_discovery / input_schema / output_schema / known_failure_modes）、版本 bump 規則、命名規則、維護規則。
 - [CLAUDE.md](CLAUDE.md) §2 增加「編號是分類、不是執行順序」說明；§4 工作流程提醒新增「PRD 是活文件」與「寫 prompt 前先填契約」兩條原則；新增 §5 Skill 路由原則（template-as-glue 模式）。
 - [99_meta/README.md](99_meta/README.md) 內容表加入 skill_registry 與 slot_contracts 兩項。
 

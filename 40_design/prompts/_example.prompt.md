@@ -1,10 +1,10 @@
 ---
 title: _example — prompt 契約樣板（dummy）
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 version: v0.1
 
-# === Prompt 契約（必填四欄）===
+# === Prompt 契約（必填五欄）===
 serves_acceptance:
   - AC-01    # （示意）使用者描述需求時，系統能擷取出核心動詞 + 受詞
   - AC-04    # （示意）擷取結果為合法 JSON、欄位齊全

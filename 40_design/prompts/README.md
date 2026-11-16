@@ -1,7 +1,7 @@
 ---
 title: 40_design/prompts 生產用 prompt
 status: in-review
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [design, prompts]
 ---
 
@@ -35,7 +35,7 @@ status: draft                     # draft / in-review / approved / deprecated
 updated: YYYY-MM-DD
 version: v0.1                     # prompt 自身的版本號（每次重大改動 bump）
 
-# === Prompt 契約（必填四欄）===
+# === Prompt 契約（必填五欄）===
 serves_acceptance:                # 它要達成哪幾條 acceptance（編號對應 10_problem/acceptance.md）
   - AC-03
   - AC-07

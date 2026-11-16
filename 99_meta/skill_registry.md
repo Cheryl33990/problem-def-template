@@ -1,7 +1,7 @@
 ---
 title: Skill Registry — SOP 階段 ↔ 外部 skill 對照
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [meta, skills, routing]
 ---
 
@@ -22,7 +22,7 @@ tags: [meta, skills, routing]
 | 目標 slot | 該 skill 預計填補的文件（路徑、片段、或 slot id） |
 | Skill / Agent | skill 的完整名稱（含 plugin 前綴）或 agent 類型 |
 | 觸發語句範例 | 使用者用什麼話會自然觸發；用來檢查 skill 的 description 是否夠精準 |
-| 安裝狀態 | ✅ 內建 / 🔌 已安裝 / 📦 已知但未裝 / ❌ 不適用 |
+| 安裝狀態 | 待確認 / 🔌 已安裝 / 📦 已知但未裝 / ❌ 不適用 |
 | 適用範圍 / 備註 | 限制條件、誰先誰後、已知坑 |
 
 ---
@@ -30,15 +30,16 @@ tags: [meta, skills, routing]
 ## 2. Skill 對照表
 
 > **使用方式**：衍生新 repo 後，依你的環境刪去不適用列、補上你實際安裝的 skill。
+> 本表列出的工具均為候選，不代表目前環境已安裝或可用；實際使用前確認名稱、權限與能力。確認後記錄環境與日期。
 > 本表初始保留**通用候選**，不針對特定領域。
 
 ### 2.1 `20_discovery/` — 資料盤點與探索
 
 | 目標 slot | Skill / Agent | 觸發語句範例 | 安裝狀態 | 適用範圍 / 備註 |
 |---|---|---|---|---|
-| `20_discovery/NN_*.md` | general-purpose agent | 「分析這份資料」「盤點 data」 | ✅ 內建 | fallback；任何格式 |
-| `20_discovery/NN_*.md`（Excel/CSV） | `financial-analysis:clean-data-xls` | 「clean this data」「normalize this sheet」 | 🔌 視環境 | 限試算表；偏資料清整非結構盤點 |
-| `20_discovery/NN_*.md`（Excel 稽核） | `financial-analysis:audit-xls` | 「audit this sheet」「sanity check」 | 🔌 視環境 | 限試算表 |
+| `20_discovery/NN_*.md` | general-purpose agent | 「分析這份資料」「盤點 data」 | 待確認 | fallback；任何格式 |
+| `20_discovery/NN_*.md`（Excel/CSV） | `financial-analysis:clean-data-xls` | 「clean this data」「normalize this sheet」 | 待確認 | 限試算表；偏資料清整非結構盤點 |
+| `20_discovery/NN_*.md`（Excel 稽核） | `financial-analysis:audit-xls` | 「audit this sheet」「sanity check」 | 待確認 | 限試算表 |
 
 ### 2.2 `10_problem/` — 問題定義
 
@@ -53,7 +54,7 @@ tags: [meta, skills, routing]
 
 | 目標 slot | Skill / Agent | 觸發語句範例 | 安裝狀態 | 適用範圍 / 備註 |
 |---|---|---|---|---|
-| `25_approach/options.md` | general-purpose agent | 「列方法比較」「列出候選方案」 | ✅ 內建 | — |
+| `25_approach/options.md` | general-purpose agent | 「列方法比較」「列出候選方案」 | 待確認 | — |
 | `25_approach/tradeoffs.md` | （本 session 直接寫） | 「做 trade-off 矩陣」 | — | 候選自建 skill：`approach-compare` |
 
 ### 2.4 `30_decisions/` — ADR
@@ -75,14 +76,14 @@ tags: [meta, skills, routing]
 | 目標 slot | Skill / Agent | 觸發語句範例 | 安裝狀態 | 適用範圍 / 備註 |
 |---|---|---|---|---|
 | `45_test_plan/test_strategy.md` | （本 session 直接寫） | 「規畫測試策略」 | — | — |
-| `45_test_plan/acceptance_tests/*` | `verify`（內建） | 「驗證這個 PR」「manually test 一下」 | ✅ 內建 | 用於跑驗收測試而非寫測試 |
+| `45_test_plan/acceptance_tests/*` | `verify`（候選） | 「驗證這個 PR」「manually test 一下」 | 待確認 | 用於跑驗收測試而非寫測試 |
 
 ### 2.7 `50_implementation/` — 實作
 
 | 目標 slot | Skill / Agent | 觸發語句範例 | 安裝狀態 | 適用範圍 / 備註 |
 |---|---|---|---|---|
 | `50_implementation/src/**` | （本 session 編輯） | 「實作 X」 | — | — |
-| `50_implementation/src/**`（review） | `review`、`security-review`、`simplify`（內建） | 「review 一下」「security review」 | ✅ 內建 | code 寫完後跑 |
+| `50_implementation/src/**`（review） | `review`、`security-review`、`simplify`（候選） | 「review 一下」「security review」 | 待確認 | code 寫完後跑 |
 
 ### 2.8 `60_experiments/` — 實驗
 

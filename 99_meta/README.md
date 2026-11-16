@@ -1,7 +1,7 @@
 ---
 title: 99_meta
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [meta, overview]
 ---
 
@@ -32,3 +32,6 @@ tags: [meta, overview]
        - glossary 新增條目的流程
        - prompt_log 的記錄時機（每次嘗試新 prompt 都應記下）
      完成後將 status 從 draft 改為 in-review -->
+
+
+資料來源記錄見 [data_inventory.md](data_inventory.md)。

@@ -1,7 +1,7 @@
 ---
 title: 驗收條件（Acceptance / Definition of Done）
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 # owner:
 tags: [problem, acceptance, dod]
 # related: [PRD]
@@ -10,7 +10,7 @@ tags: [problem, acceptance, dod]
 # 驗收條件（Acceptance / Definition of Done）
 
 本文件把 `PRD.md` §4 的**成功指標**翻譯成**可驗證的二元條件**——
-每一條都必須能被某種方式證明「達到 / 沒達到」，不允許主觀判斷。
+每條使用穩定 AC-NN 編號（刪除後不重用），並且都必須能被某種方式證明「達到 / 沒達到」，不允許主觀判斷。
 
 > 本檔回答「什麼樣才算做完？」；具體「怎麼測試？」交給 `45_test_plan/`。
 
@@ -31,11 +31,11 @@ tags: [problem, acceptance, dod]
      原則：一條成功指標可以拆成多條驗收條件
      完成後將 status 從 draft 改為 in-review -->
 
-| PRD 指標 # | 成功指標（摘要） | 驗收條件（可驗證） | 量測方式 | 驗收時機 |
-|---|---|---|---|---|
-| 1 | <!-- TODO --> | <!-- 例：在 N 筆測試集上準確率 ≥ X% --> | <!-- 例：腳本自動跑、輸出 confusion matrix --> | <!-- 例：每次 PR --> |
-| 2 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
-| 3 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
+| AC ID | PRD 指標 # | 成功指標（摘要） | 驗收條件（可驗證） | 量測方式 | 驗收時機 |
+|---|---|---|---|---|---|
+| AC-01 | 1 | <!-- TODO --> | <!-- 例：在 N 筆測試集上準確率 ≥ X% --> | <!-- 例：腳本自動跑、輸出 confusion matrix --> | <!-- 例：每次 PR --> |
+| AC-02 | 2 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
+| AC-03 | 3 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
 
 ---
 
@@ -46,7 +46,7 @@ tags: [problem, acceptance, dod]
        - 效能：單位輸入處理時間上限
        - 穩定性：連續執行 N 次無 crash
        - 可重現性：相同輸入產出相同輸出
-       - 文件完整性：所有 .md 的 status 都 ≥ in-review
+       - 文件完整性：所有適用文件已審閱；範本與 N/A 有明確標示
      原則：非功能性條件常被忘，特別列一節 -->
 
 | 類別 | 驗收條件 | 量測方式 |
@@ -59,7 +59,7 @@ tags: [problem, acceptance, dod]
 
 ## 4. 結案閘門（Closure Gate）
 
-整個專案算「完成」必須**全部勾選**以下項目（不勾就不能進 `70_closure/`）：
+先完成下列驗收，再進入 `70_closure/` 執行完成清單與復盤。驗收通過不等於已結案。
 
 - [ ] PRD.md `status: approved`
 - [ ] 所有成功指標都在本表有對應驗收條件
@@ -67,8 +67,7 @@ tags: [problem, acceptance, dod]
 - [ ] 所有對應測試通過
 - [ ] 非功能性條件全數達標
 - [ ] `99_meta/traceability.md` 已更新並對齊
-- [ ] `70_closure/done_checklist.md` 全勾
-- [ ] `70_closure/retrospective.md` 完成
+
 
 ---
 

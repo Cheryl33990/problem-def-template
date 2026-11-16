@@ -1,7 +1,7 @@
 ---
 title: Slot Contracts — 各 SOP 文件的填補契約
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [meta, contracts, slots]
 ---
 
@@ -13,6 +13,8 @@ tags: [meta, contracts, slots]
 > 對應的可用 skill 見 [skill_registry.md](skill_registry.md)；路由規則見 [CLAUDE.md §5](../CLAUDE.md)。
 
 ---
+
+精簡案例依 [START_HERE](../START_HERE.md) 可合併欄位並列出 N/A 理由；以下為展開獨立文件時的契約。
 
 ## 0. 共通驗收（所有 slot 必過）
 
@@ -35,7 +37,7 @@ tags: [meta, contracts, slots]
 | §1 背景 | ✅ | 痛點 + 現況 + 為什麼現在做（3-5 句） |
 | §2 目標使用者 | ✅ | 具體角色 + 介入時點；對應 `stakeholders.md` |
 | §3 需求 | ⚠️ 可分批 | 至少先有 MUST 一組；SHOULD/MAY 可延後 |
-| §4 成功指標 | ✅ | 至少 3 條、可量化；每條編號（被 acceptance / traceability 引用） |
+| §4 成功指標 | ✅ | 至少 1 條、可量測；每條編號（被 acceptance / traceability 引用） |
 | §5 非目標 | ✅ | 3-5 條摘要；完整版見 `non_goals.md` |
 | §6 約束 | ✅ | 至少列出已知的硬性約束（時程/預算/技術/法規） |
 | §7 開放問題 | ✅ | 未知數列出 + 指到預計回答的 discovery / experiment |
@@ -62,7 +64,7 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| 至少 3 個關鍵角色；含「角色名 / 對本專案的關注點 / 何時介入」三欄 |
+| 列出實際關鍵角色（同一人可兼任，不需湊滿 3 人）；含「角色名 / 對本專案的關注點 / 何時介入」三欄 |
 
 ---
 
@@ -74,7 +76,7 @@ tags: [meta, contracts, slots]
 |---|---|---|
 | 問題 | ✅ | 這份筆記要釐清什麼具體疑問 |
 | 方法 | ✅ | 用什麼方式找答案（看資料、訪談、實驗、文獻） |
-| 發現 | ✅ | 至少 3 條具體發現；**禁止把假設當結論**寫 |
+| 發現 | ✅ | 具體發現（數量依證據，不需湊滿 3 條）；**禁止把假設當結論**寫 |
 | 對下一階段的影響 | ✅ | 用 「→ 改 PRD §X」「→ 開 ADR」「→ 排實驗」格式條列 |
 
 **驗收**：能回答「這份筆記改變了 PRD / approach / decision 的什麼？」若答不出，要嘛筆記沒寫完、要嘛上游沒被更新。
@@ -87,7 +89,7 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| 至少 2 個候選（只有 1 個不是「選擇」） |
+| 比較至少 2 個候選（含維持現況）；只有 1 個合理方法時須於 ADR 註明豁免理由 |
 | 每個候選含「核心想法 / 優點 / 限制 / 不確定性」四段 |
 
 ### 3.2 `tradeoffs.md`
@@ -105,8 +107,8 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| 依 [TEMPLATE.md](../30_decisions/TEMPLATE.md) 結構：Status / Context / Decision / Consequences / Alternatives Considered |
-| Decision 段若引用 `25_approach/`，該資料夾 status 須為 approved |
+| 依 [TEMPLATE.md](../30_decisions/TEMPLATE.md) 結構（狀態放 frontmatter）：Context / Decision / Consequences / Alternatives Considered |
+| Decision 段若引用 `25_approach/`，所引用的具體文件須為 approved |
 | 已 approved / archived 的 ADR **禁止直接改**——新增一份新 ADR、舊版 status 改 deprecated、雙向 `related` 連結 |
 
 ---
@@ -132,7 +134,7 @@ tags: [meta, contracts, slots]
 | `output_schema` | 指到 `40_design/schema/` 的具體 anchor |
 | `known_failure_modes` | 已知失敗情境（來自 discovery / experiment） |
 
-**驗收**：四欄都填得出來才動筆。填不出代表上游沒收斂。
+**驗收**：五個欄位都填得出來才動筆。填不出代表上游沒收斂。
 
 ### 5.3 `schema/*.md`
 
@@ -174,8 +176,8 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| 依 [EXP_TEMPLATE/](../60_experiments/EXP_TEMPLATE/) 三件組：`plan.md` / `run.md` / `result.md` |
-| `result.md` 結論若挑戰 PRD，必須回頭改 PRD 並在 §8 留紀錄 |
+| 依 [EXP_TEMPLATE/](../60_experiments/EXP_TEMPLATE/) 三件組：`README.md`（假設、設定、步驟、結果、結論）/ `analysis.md`（觀測與分析）/ `prompt.md`（使用 AI 時填寫，否則寫明不適用） |
+| `README.md` §5 結論若挑戰 PRD，必須回頭改 PRD 並在 §8 留紀錄 |
 
 ---
 
@@ -201,7 +203,7 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| 每條 PRD §4 指標都能追到至少一個 ADR + 至少一個驗收測試 |
+| 每條 PRD §4 指標都能追到驗收條件與驗收測試；ADR / EXP / 程式不適用時填 N/A 與理由 |
 | 斷鏈處（指標→無 ADR、ADR→無實作）必須顯式標 ⚠️ 而不是省略 |
 
 ---
