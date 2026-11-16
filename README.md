@@ -16,6 +16,10 @@ updated: 2026-11-16
 
 [合成示例](examples/meeting-notes.md)展示填寫方式，[PILOT.md](PILOT.md)定義真實試跑與紀錄方式。
 
+完整操作：[USAGE](USAGE.md)；流程與階段條件：[WORKFLOW](WORKFLOW.md)；審查與合併：[REVIEW](REVIEW.md)。
+
+本模板提供文件與 PR 填寫格式；尚未提供自動測試、CI、部署或自動驗收。工具需由衍生專案另外設定。
+
 ## 目錄
 
 | 位置 | 用途 |

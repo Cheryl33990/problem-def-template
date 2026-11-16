@@ -16,6 +16,8 @@ tags: [meta, contracts, slots]
 
 精簡案例依 [START_HERE](../START_HERE.md) 可合併欄位並列出 N/A 理由；以下為展開獨立文件時的契約。
 
+流程與狀態見 [WORKFLOW](../WORKFLOW.md)，審查見 [REVIEW](../REVIEW.md)。模板文件不代表自動化已安裝。
+
 ## 0. 共通驗收（所有 slot 必過）
 
 | 項 | 規則 | 參考 |
@@ -79,7 +81,7 @@ tags: [meta, contracts, slots]
 | 發現 | ✅ | 具體發現（數量依證據，不需湊滿 3 條）；**禁止把假設當結論**寫 |
 | 對下一階段的影響 | ✅ | 用 「→ 改 PRD §X」「→ 開 ADR」「→ 排實驗」格式條列 |
 
-**驗收**：能回答「這份筆記改變了 PRD / approach / decision 的什麼？」若答不出，要嘛筆記沒寫完、要嘛上游沒被更新。
+**驗收**：能回答「這份筆記改變了 PRD / approach / decision 的什麼？」若支持維持現況也可，附證據與理由；尚無結論則明寫未知。
 
 ---
 
@@ -119,8 +121,8 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| 上游引用：至少指到一個 approved ADR |
-| 下游連結：列出對應的 `schema/` 與 `prompts/` |
+| 上游引用：指到相關已確認需求；重大決策引用 approved ADR，無重大選擇時寫 N/A 理由 |
+| 下游連結：列出適用的 schema、pipeline、prompts；未使用者寫 N/A |
 
 ### 5.2 `prompts/<name>.prompt.md`
 
@@ -141,7 +143,7 @@ tags: [meta, contracts, slots]
 | 規則 |
 |---|
 | 每個 schema 用 anchor（`#user-utterance`、`#extracted-fields`）以便 prompt 引用 |
-| schema 變動走 ADR（被 prompt 引用的 schema 是 breaking 點） |
+| 重大或破壞相容的 schema 變動走 ADR；相容修正仍同步引用它的 prompt 與測試 |
 
 ---
 
@@ -160,6 +162,8 @@ tags: [meta, contracts, slots]
 | 一條 AC 對應一個檔案；含「前置條件 / 步驟 / 期望結果 / 通過條件」 |
 
 ---
+
+驗證結果另放 [validation/](../45_test_plan/validation/README.md)，不可用文件 approved 取代通過判定。
 
 ## 7. `50_implementation/` — 實作
 
@@ -187,7 +191,7 @@ tags: [meta, contracts, slots]
 
 | 規則 |
 |---|
-| acceptance.md 每條 AC 都標記 ✅ / ❌ / ⏭️（跳過原因） |
+| acceptance.md 每條 AC 都標記通過／未通過／未跑／不適用，連結當次驗證結果；不適用須經範圍確認 |
 
 ### 9.2 `retrospective.md`
 

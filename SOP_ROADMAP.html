@@ -131,7 +131,7 @@
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
-<p style="padding:16px">首次使用先看 <a href="START_HERE.md">精簡起手流程</a>。本頁為完整參考；天數、人數與文件數量依案例調整，不是驗收門檻。</p>
+<p style="padding:16px">流程規則以 WORKFLOW.md 為準，審查見 REVIEW.md；本頁只供導覽。首次使用先看 <a href="START_HERE.md">精簡起手流程</a>。本頁為完整參考；天數、人數與文件數量依案例調整，不是驗收門檻。</p>
 <div class="wrap">
 
   <header class="cover">
@@ -272,7 +272,7 @@ graph TD
       <h4>Today（30 分鐘）</h4>
       <ul>
         <li>替換 <code>&lt;PROJECT_NAME&gt;</code> 與 <code>&lt;PROJECT_GOAL&gt;</code> placeholder</li>
-        <li>更新 <code>README.md</code> / <code>CLAUDE.md</code> / <code>CHANGELOG.md</code> 三檔開頭</li>
+        <li>更新 <code>README.md</code> / <code>AGENTS.md</code> / <code>CHANGELOG.md</code> 三檔開頭</li>
         <li>把支撐用資料路徑記到 <code>99_meta/data_inventory.md</code>（如有）</li>
       </ul>
 
@@ -507,7 +507,7 @@ graph TD
     <div class="callout warn">
       <b>③ ADR 不修改只新增。</b><code>30_decisions/</code> 已 approved / archived 的 ADR 不可直接動，
       要改新增一份、舊的標 <code>deprecated</code> 並用 <code>related</code> 互相連結。
-      （CLAUDE.md §3 第一條禁令）
+      （AGENTS.md §3 第一條禁令）
     </div>
 
     <div class="callout warn">
@@ -576,7 +576,7 @@ graph TD
     </ul>
     <div class="callout ok">
       <b>本檔的本質是「使用說明」，不是「規範」。</b>
-      規範在 <code>CLAUDE.md</code> 與 <code>99_meta/conventions.md</code>，本檔的角色是把規範翻成「我下一步該做什麼」。
+      規範在 <code>AGENTS.md</code> 與 <code>99_meta/conventions.md</code>，本檔的角色是把規範翻成「我下一步該做什麼」。
     </div>
   </section>
 

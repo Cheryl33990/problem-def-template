@@ -1,105 +1,74 @@
 ---
-title: USAGE — 如何使用本 Template
-status: approved
+title: 從新專案到交付的使用指南
+status: in-review
 updated: 2026-11-16
-tags: [meta, template-usage]
 ---
 
-# 如何使用本 Template
+# 從新專案到交付的使用指南
 
-本 repo 是一個 **GitHub Template**，提供「問題定義 → 探索 → 決策 → 設計 → 實作」SOP 的文件骨架。
-適用於需要把研究、探索、決策過程留下可復盤紀錄的專案——不限於工程，也適合資料分析、產品探索、學術專案。
+## 1．建立專案
 
-> **不確定從哪開始？** 先打開 [SOP_ROADMAP.html](SOP_ROADMAP.html) — 依「對問題的熟悉度」判斷該走哪條路徑（PRD-first / Hybrid / Discovery-first），並對應每條路徑的 Today / Week 1 / Week 2 動作。
+新 repo：若 GitHub 提供 Use this template，選 Create a new repository；沒有就建立空 repo，複製需要的模板檔案。這會成為獨立專案；模板之後更新不會自動套用。
+既有 repo：在工作分支加入需要的文件，保留原本 src、tests、CI 與 docs。不要整包覆蓋 README、AGENTS 或既有 ADR；在 work log 記錄路徑對照。
+不需要先安裝任何程式；模板本身只是工作文件。
 
----
+## 2．初始化，只做一次
 
-## 0. 先選規模
+1. 記下來源 repo 與採用的 commit，放進 [work log](99_meta/work_log.md)。
+2. 選精簡或完整模式，列採用文件及 N/A 理由。
+3. 改寫專案 README：名稱、目標、操作方式與文件入口；模板維護的 CHANGELOG 與 IMPROVEMENT_PLAN 是來源歷史，衍生專案另建自己的紀錄，不當成自身完成進度。
+4. 在 [AGENTS](AGENTS.md) 填目標與實際路徑；CLAUDE 只作相容入口。既有 repo 優先整合既有工作規則。
+5. 填 PRD 的背景、使用者、至少一項成功指標、範圍與約束；未知就明寫未知，不編造。
+6. 在 acceptance 建 AC-01 起的條目：測什麼、如何量測、何時驗收、通過門檻。
+7. 確認本輪範圍與 AC，再開始對應實作。尚不清楚時可先做探索。
+8. 原始素材置於排除版控的位置，data_inventory 記來源與版本；勿把密鑰寫進文件。
 
-第一次使用先走 [START_HERE.md](START_HERE.md) 的精簡路徑；本檔為完整初始化參考。角色依實際情境列出，不需湊人數。
+範本中的 TODO 可在完成內容後移除；不適用的範本或欄位可裁剪並記理由。不把全庫 TODO 歸零當專案成功條件。
 
-## 1. 衍生新專案
+## 3．規劃工作
 
-### 1.1 從 GitHub 衍生
-在 GitHub 本 repo 頁面點 **「Use this template」 → 「Create a new repository」**，填入新 repo 名稱（建議公開度設為 Private 直到專案有具體成果）。
+[WORKFLOW](WORKFLOW.md) 是規則主來源。每個小目標用一個 Issue 或 work log 任務，寫：
+- 這次要改善什麼、對應哪條 AC。
+- 做什麼、不做什麼、依賴與風險。
+- 預計怎麼驗證、需要哪些資料。
+- 完成後交付什麼、下一步是什麼。
 
-### 1.2 本機 clone
-```bash
-gh repo clone <YOUR_ORG>/<YOUR_PROJECT>
-cd <YOUR_PROJECT>
-```
+Issue 管待辦，PR 管實際變更；很小的工作可以只用 PR，不強制雙重填表。
 
----
+## 4．先驗證假設，再做昂貴實作
 
-## 2. 衍生後的初始化清單
+查資料、訪談、比較觀察寫 discovery。要測「做法 X 是否能達到 Y」就複製 EXP_TEMPLATE，先寫假設、樣本、基準、門檻與停止條件，再跑實驗。
+結果可支持、推翻或無定論。根據證據回寫 PRD、方案比較或 ADR；維持原方向也附理由。
+重大、昂貴或難回頭的選擇寫 ADR，確認後才依此展開設計。
 
-按順序處理，每完成一項把該檔的 `status` 從 `draft` 改為 `in-review`（或 `approved`）。
+## 5．測試與實作
 
-### 2.1 替換 placeholder
-全文搜尋並替換以下標記：
-- `<PROJECT_NAME>` — 你的專案名（一兩個字的代號，例如 `rebar_reader`）
-- `<PROJECT_GOAL>` — 一句話描述要解的問題
+在 test_strategy 決定必要測試；每條 AC 的規格放 acceptance_tests/AC-NN.md，程式測試放專案實際 tests 路徑。
+寫明前置條件、輸入、步驟、期望、通過門檻及證據位置。非程式專案可人工驗證。
+建立工作分支，小批實作；測成功、失敗與重要邊界。將實際命令、版本、結果及限制保存到 validation，不只寫「測過了」。
 
-建議先用：
-```bash
-grep -rn "<PROJECT_NAME>" --include="*.md"
-grep -rn "<PROJECT_GOAL>" --include="*.md"
-```
+## 6．Review 與合併
 
-### 2.2 更新門面三檔
-- [README.md](README.md) — 改標題、把開頭「本 template 衍生」那段刪掉
-- [CLAUDE.md](CLAUDE.md) — §0 專案目標一句話
-- [CHANGELOG.md](CHANGELOG.md) — 加上你的 `## [0.1.0] - YYYY-MM-DD` 與初始 commit 摘要
+開 PR 並填 PR template；按照 [REVIEW](REVIEW.md) 審查。自己或 AI review 都需要讀實際 diff 與證據。
+有問題就在同一分支修正，重跑受影響驗證；準備好才 Ready for review。確認後由負責人合併。
+合併只是變更進入主分支；部署與 runtime 驗證另記，不當作已自動完成。
 
-### 2.3 填入問題定義
-- [10_problem/PRD.md](10_problem/PRD.md) — 至少完成 §1 背景、§2 目標使用者、§4 成功指標
-- [10_problem/stakeholders.md](10_problem/stakeholders.md) — 列出實際關鍵角色
-- [10_problem/non_goals.md](10_problem/non_goals.md) — 列出範圍邊界（PRD §5 為摘要）
-- [10_problem/acceptance.md](10_problem/acceptance.md) — 把 PRD §4 成功指標翻成可驗證條件
+## 7．收尾與下次接手
 
-### 2.4 規劃探索筆記
-進入 [20_discovery/](20_discovery/)：複製 `NN_template.md` 為 `01_<topic>.md`、`02_<topic>.md` 等，依本專案實際探索主題命名。同時更新 `20_discovery/README.md` 的內容表。
+更新追溯矩陣：成功指標 → AC → 必要決策／實作 → 測試規格 → 當次結果。
+work log 留下版本、已完成、阻礙、下一步與所需確認。每次工作結束都更新，不必等整個專案結案。
+本輪交付 AC 有結果後填 done_checklist，記未完成與接受風險，再寫 retrospective 與結案聲明。下一版用新的一輪範圍繼續。
 
-### 2.5 補上術語表
-[99_meta/glossary.md](99_meta/glossary.md) — 把你領域的核心術語先放幾個進去，避免文件內名詞不一致。
+## 8．可直接交給 AI 的指令
 
-### 2.6 完成本檔
-本 USAGE.md 本身可以刪除（你不再需要使用說明），或保留作為新成員 onboarding。
+### 新專案起手
+「請先讀本 repo 的 AGENTS、WORKFLOW 與 USAGE。我的目標是……。先盤點現有資料，區分事實、假設與未知，提出本輪範圍、非目標和 AC 草稿，列出精簡／完整文件配置；不要把未知內容填成事實。先完成可檢閱提案，讓我確認範圍與驗收標準。」
 
----
+### 執行一個已確認工作
+「請依已確認的 AC-01 完成本輪工作，先讀相關 PRD、ADR 與 work log。在工作分支操作，事前定測法，保存實際結果。已授權範圍內持續完成；若需改目標、架構或門檻，提出影響供我確認。完成後開 PR，列出未驗證項目。」
 
-## 3. 工作流程提醒（沿用 CLAUDE.md §4）
+### 審查
+「請依 REVIEW.md 審查這個 PR 的實際 diff 與驗證證據。先列可重現的重大發現及位置，再列缺少的測試與剩餘風險。不要直接合併；沒有發現也說明檢查範圍與限制。」
 
-- 動手前先列計畫，與 stakeholder 確認再執行
-- 多步任務用 task tracker 追蹤
-- 變更檔案後更新 `updated:` 為今日日期
-- ADR 採「新增不修改」原則：要改舊決策請新增一份 ADR、把舊 ADR 標 `deprecated`
-
----
-
-## 4. 結構速查
-
-```
-10_problem/        問題定義（PRD、stakeholders、non_goals、acceptance）
-20_discovery/      探索筆記（一份一個主題）
-25_approach/       候選方法比較（options、tradeoffs）
-30_decisions/      ADR
-40_design/         技術設計（tech_spec + schema/pipeline/prompts 子目錄）
-45_test_plan/      測試規畫（strategy、fixtures、acceptance_tests）
-50_implementation/ 程式碼、測試
-60_experiments/    實驗紀錄（一個實驗一個資料夾）
-70_closure/        結案與復盤（done_checklist、retrospective）
-99_meta/           慣例、術語、prompt log、traceability
-```
-
-每個資料夾的 README.md 都有更詳細的角色定位。
-
-SOP 流程：**10 → 20 → 25 → 30 → 40 → 45 → 50 → 60（穿插）→ 70**；99 為跨階段共用。
-
----
-
-> 完整流程可依 START_HERE 裁剪；N/A 必須附理由。編號是分類，探索與實驗可反覆穿插。
-
-## 5. 回饋與貢獻
-
-對本 template 結構有改進建議，歡迎回到 [problem-def-template](https://github.com/Cheryl33990/problem-def-template) 開 issue 或 PR。
+### 下次繼續
+「請先讀 work log、PRD、AC 與相關 ADR，確認目前版本與未完成事項，再接續下一個已授權工作。歷史測試結果不可冒充目前版本已通過。」

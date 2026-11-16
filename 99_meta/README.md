@@ -35,3 +35,7 @@ tags: [meta, overview]
 
 
 資料來源記錄見 [data_inventory.md](data_inventory.md)。
+
+
+- [work_log.md](work_log.md)：當前進度與接手。
+- [risks_and_assumptions.md](risks_and_assumptions.md)：風險排序與假設追蹤。
