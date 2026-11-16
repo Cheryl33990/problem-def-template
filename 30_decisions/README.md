@@ -1,7 +1,7 @@
 ---
 title: 30_decisions ADR
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [decisions, overview]
 ---
 
@@ -19,7 +19,7 @@ tags: [decisions, overview]
 
 - 檔名格式：`ADR-NNN-short-title.md`（NNN 為三位數流水號，從 001 開始）
 - status 流轉：`draft` → `in-review` → `approved`；被新版取代時改為 `deprecated`
-- **已 `approved` 或 `archived` 的 ADR 不可直接修改**；要更動請新增一份 ADR 並用 `related` 互相連結（見 [CLAUDE.md §3](../CLAUDE.md)）
+- **已 `approved` 或 `archived` 的 ADR 不可直接修改**；要更動請新增一份 ADR 並用 `related` 互相連結（見 [AGENTS.md §3](../AGENTS.md)）
 
 ## 何時新增 ADR
 

@@ -73,3 +73,12 @@ tags: [meta, traceability]
 - **`60_experiments/`** — §3 的來源
 - **`45_test_plan/acceptance_tests/`** — 主表狀態欄的來源
 - **`70_closure/done_checklist.md` §9** — 結案前強制檢查本表
+
+
+## 6. 當次驗證證據
+
+每條 AC 連結測試規格與 [validation](../45_test_plan/validation/README.md) 的實際結果；同一測試可覆蓋多個 AC，仍須逐條判定。記錄版本與日期，未跑就填未跑，不能僅憑過去 passing 判斷目前版本。
+
+| AC ID | 測試規格 | 當次結果／版本 | 判定／限制 |
+|---|---|---|---|
+| AC-01 | 待填 | 待填 | 未跑 |

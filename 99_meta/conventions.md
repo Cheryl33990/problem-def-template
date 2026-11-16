@@ -1,106 +1,35 @@
 ---
-title: 專案慣例
+title: 專案文件慣例
 status: in-review
-updated: 2026-05-20
-tags: [meta, conventions]
+updated: 2026-11-16
 ---
 
-# 專案慣例
+# 專案文件慣例
 
-本文件規範本專案的命名、文件格式、與工作流程慣例。
-**「frontmatter 規範」一節已是當前最新版本可直接套用；其他章節為骨架，待補。**
+## 文件與任務狀態
 
----
+Markdown frontmatter 必填 title、status、updated（YYYY-MM-DD）；owner、tags、related 可選。GitHub 提供的設定格式若不支援 frontmatter，依平台格式，不硬塞 YAML。
+文件狀態：draft 草擬／in-review 待審／approved 已採用／archived 封存／deprecated 被取代。狀態不是大小排序，不使用「≥ in-review」作判斷。
+範本可保留 draft 與 TODO，說明文件可為 in-review；不要將未使用範本視為交付缺失。任務進度另見 work log，測試結果另見 validation。
 
-## 1. YAML Frontmatter 規範（已定版）
+## 命名與連結
 
-所有 `.md` 檔案開頭必須有 frontmatter，欄位分**必填**與**選填**兩組。
+沿用 NN_snake_case 階段目錄；普通文件 snake_case.md，ADR-NNN-short-title.md，EXP-NNN-short-title/，驗收規格 AC-NN.md，驗證結果 YYYY-MM-DD-short-name.md。
+文件互相使用相對連結；外部資料記版本、來源與存取條件。AC、ADR、EXP 編號不可重用；一個測試可涵蓋多條 AC，但規格須逐條可追溯。
 
-### 1.1 必填三欄
+## 內容與術語
 
-```yaml
----
-title: <檔案標題>
-status: draft        # 狀態值見 1.3
-updated: YYYY-MM-DD  # 最近一次內容變動的日期
----
-```
+PRD 定義問題，AC 定義完成標準，測試規格定義測法，validation 記實際結果。完整流程見 [WORKFLOW](../WORKFLOW.md)；單份文件契約見 [slot_contracts](slot_contracts.md)。
+新術語記入 glossary，首次出現說明縮寫。事實附來源，假設明確標示，不足證據寫未知。
 
-### 1.2 選填三欄（視需要加）
+## 變更管理
 
-```yaml
-owner: <負責人>                       # 該文件目前的負責人
-tags: [requirements, beam]            # 主題標籤，便於檢索
-related: [ADR-001, EXP-003]           # 相關文件 ID（ADR、EXP、其他 .md）
-```
+一般 approved 活文件可以修訂，更新日期並保留必要修訂記錄；修改 PRD 需求、指標或範圍時記觸發來源。
+已接受 ADR 的決策正文不重寫；改決策新增 ADR，舊文件只更新 deprecated 與取代連結。歷史驗證結果不覆寫，重跑新增紀錄。
+模板變更記 CHANGELOG；尚未發布的版本放 Unreleased，不把 commit 或 PR 合併冒充正式發布。
+衍生專案記模板來源 commit，後續透過獨立 PR 手動挑選改進；模板沒有自動同步機制。
 
-### 1.3 status 五個值
+## 裁剪與衝突
 
-| status | 意義 | 何時用 |
-|---|---|---|
-| `draft` | 草稿 | 剛建立、內容未完整 |
-| `in-review` | 審閱中 | 內容完整、等待 review 或交叉檢核 |
-| `approved` | 已採用 | 通過審閱、作為當前事實來源 |
-| `archived` | 已歸檔 | 仍正確但不再活躍維護（例如已結案的實驗） |
-| `deprecated` | 已棄用 | 被新版取代或被判定為不正確；應在 `related` 指向取代者 |
-
-### 1.4 完整範例
-
-```yaml
----
-title: <核心領域物件>資料模型
-status: in-review
-updated: 2026-05-20
-owner: <name>
-tags: [design, schema]
-related: [ADR-002, EXP-001]
----
-```
-
----
-
-## 2. 檔名規則
-
-<!-- TODO: 此處填具體命名規則
-     需包含：
-       - 階段資料夾命名（NN_name/）
-       - 探索筆記排序前綴（NN_）
-       - ADR 命名（ADR-NNN-short.md）
-       - 實驗命名（EXP-NNN-short/）
-       - snake_case vs kebab-case 的使用時機
-     參考 CLAUDE.md §1.1 已列的初稿
-     完成後將 status 從 in-review 改為 approved -->
-
----
-
-## 3. 文件結構慣例
-
-<!-- TODO: 此處填各類文件的標準章節結構
-     需包含：
-       - PRD 章節（背景 / 使用者 / 需求 / 成功指標 / 非目標）
-       - 探索筆記章節（問題 / 方法 / 發現 / 對下一階段的影響）
-       - ADR 章節（已有 30_decisions/TEMPLATE.md，本處引用即可）
-     參考 30_decisions/TEMPLATE.md
-     完成後將相關範例補進對應檔案 -->
-
----
-
-## 4. 術語使用
-
-<!-- TODO: 此處說明術語管理流程
-     需包含：
-       - 新術語先寫進 99_meta/glossary.md 再被引用
-       - 文件內首次出現中英對照
-       - 縮寫的展開規則
-     參考 99_meta/glossary.md -->
-
----
-
-## 5. 變更與版本
-
-<!-- TODO: 此處填變更管理規則
-     需包含：
-       - 何時更新 CHANGELOG.md
-       - 何時 bump 版本號
-       - 已 approved 文件如何修訂（新增 ADR、原文 deprecate）
-     參考 CHANGELOG.md、30_decisions/TEMPLATE.md -->
+精簡模式可合併文件，但保留問題、AC、證據與決策鏈。N/A 填理由與確認人；適用但未做的工作標未完成。
+流程以 WORKFLOW 為準、review 以 REVIEW 為準、內容以 slot_contracts 為準，路線圖只導覽。發現衝突先列出差異並修文件，不靜默挑有利條款。使用者已明確授權的範圍優先。

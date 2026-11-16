@@ -1,7 +1,7 @@
 ---
 title: 70_closure 結案與復盤
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [closure, overview]
 ---
 
@@ -10,6 +10,8 @@ tags: [closure, overview]
 本資料夾收錄**結案與復盤**——SOP 的最後一階段，讓專案能「乾淨關閉」並留下可復盤的紀錄。
 
 > 沒有這層，專案常常「自然消失」而非「完成」——下一個專案無法繼承經驗，做對的事和踩到的雷都會被忘記。
+
+本輪適用範圍與未完成項目先對齊；復盤完成後才簽最終結案。
 
 ## 內容
 
@@ -32,13 +34,13 @@ tags: [closure, overview]
 
 <!-- TODO: 此處填本資料夾的寫作慣例
      建議內容：
-       - 復盤要在記憶還新時寫（建議結案 1-2 週內）
+       - 復盤要在記憶還新時寫（最終簽署前）
        - 誠實記錄失誤；目的是讓下一個專案少踩雷，不是究責
        - 對未來決策有用的洞察應抽出來進 99_meta/ 或新 ADR
      完成後將 status 從 draft 改為 in-review -->
 
 ## 完成本資料夾後
 
-- 將整個 repo 各檔的 status 確認為 `approved` 或 `archived`
+- 確認本輪適用文件已審閱；未用範本與 N/A 不需升為 approved
 - 在 CHANGELOG.md 加上「結案」條目
 - 若這個專案的方法論值得沉澱，把可重用的部分抽到 template repo

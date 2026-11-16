@@ -10,7 +10,7 @@ tags: [meta, skills, routing]
 > 本檔列出**本專案環境中可用的 skill / agent**，以及它們對應到哪些 SOP 階段的 slot。
 > 給未來 Claude session 用：當使用者用自然語言描述某階段動作時，先查本檔挑最具體的 skill；沒匹配再 fallback 到 general-purpose agent 或本 session 直接處理。
 >
-> 路由規則見 [CLAUDE.md §5](../CLAUDE.md)；slot 契約見 [slot_contracts.md](slot_contracts.md)。
+> 路由規則見 [AGENTS.md §5](../AGENTS.md)；slot 契約見 [slot_contracts.md](slot_contracts.md)。
 
 ---
 

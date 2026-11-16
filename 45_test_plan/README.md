@@ -1,7 +1,7 @@
 ---
 title: 45_test_plan 測試規畫
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 tags: [test, overview]
 ---
 
@@ -43,3 +43,6 @@ tags: [test, overview]
 - PRD 或 acceptance.md 變更 → acceptance_tests/ 必須跟著更新
 - 新增 ADR 改變技術路徑 → test_strategy.md 可能需要調整
 - 發現新的邊界 case → 寫進 fixtures.md（並補對應測試）
+
+
+先用 [acceptance_tests/TEMPLATE.md](acceptance_tests/TEMPLATE.md) 定義測法，再用 [validation/](validation/README.md) 記實際執行結果；流程與工具選擇見 [test_strategy.md](test_strategy.md)。

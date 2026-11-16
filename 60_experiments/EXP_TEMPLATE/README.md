@@ -1,7 +1,7 @@
 ---
 title: EXP-NNN <短標題>
 status: draft
-updated: 2026-05-20
+updated: 2026-11-16
 owner: <name>
 tags: [experiment]
 related: []
@@ -24,6 +24,10 @@ related: []
        「如果 [做法 X]，則 [指標 Y] 會 [預期變化]。」
      避免：模糊的「我們想看看 X 行不行」
      完成後 status 維持 draft，等執行開始再進 in-review -->
+
+## 1.1 事前判準與可行性
+
+<!-- TODO：執行前寫基準、樣本選擇、通過／失敗門檻、停止條件、時間與資源上限。未知欄位先列待確認，不得看完結果再補門檻。 -->
 
 ## 2. Setup（實驗設定）
 
