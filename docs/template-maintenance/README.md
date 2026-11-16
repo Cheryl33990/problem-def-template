@@ -14,3 +14,5 @@ updated: 2026-11-16
 - [本次重排與遷移檢查](layout_review.md)
 
 使用者從 [使用指南](../workflow/guide.md) 開始，不需要閱讀本目錄。歷史的新增日期和版本是模板歷史，不能當成衍生專案已完成工作。
+
+- [PR #3 流程檢查紀錄](2026-11-16-template-flow-review.md)
