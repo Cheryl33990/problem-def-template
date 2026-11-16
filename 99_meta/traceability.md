@@ -69,7 +69,7 @@ tags: [meta, traceability]
 ## 5. 與其他文件的關係
 
 - **`PRD.md` §4** — 主表第一欄的來源
-- **`30_decisions/`** — 主表第三欄與 §2 的來源
+- **`30_decisions/`** — 主表的「對應 ADR」欄與 §2 的來源
 - **`60_experiments/`** — §3 的來源
 - **`45_test_plan/acceptance_tests/`** — 主表狀態欄的來源
 - **`70_closure/done_checklist.md` §9** — 結案前強制檢查本表
