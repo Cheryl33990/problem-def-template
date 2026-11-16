@@ -109,9 +109,9 @@ frontmatter 之後依序：
 
 ## 4. 維護規則
 
-- **修改前確認契約仍成立**：改 prompt 內容前先回看 frontmatter 四欄是否仍正確。若 `serves_acceptance` 變了，可能是新的 prompt 而不是修改現有的。
+- **修改前確認契約仍成立**：改 prompt 內容前先回看 frontmatter 五欄是否仍正確。若 `serves_acceptance` 變了，可能是新的 prompt 而不是修改現有的。
 - **重大版本變動須有實驗支撐**：major bump 必須在 `related:` 指到至少一個 `EXP-NNN`，否則拒收。
-- **schema 變更走 ADR**：`input_schema` / `output_schema` 變更先在 `30_decisions/` 開 ADR，prompt 跟著動。
+- **重大 schema 變更走 ADR**：破壞相容或重大介面變更先記 ADR；相容修正同步 prompt 與測試即可。
 - **deprecated prompt 不刪**：保留檔案、status 改 `deprecated`、`related:` 指到取代它的新 prompt。
 - 每次重大修改在 [99_meta/prompt_log.md](../../99_meta/prompt_log.md) 留一筆。
 

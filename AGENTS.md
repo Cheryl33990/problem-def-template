@@ -79,7 +79,7 @@ tags: [meta, ai-collaboration]
 - 變更檔案後更新該檔案的 `updated:` 欄位為今日日期。
 - 影響產出或決策的 prompt 嘗試與結果記錄到 [99_meta/prompt_log.md](99_meta/prompt_log.md)。
 - **PRD 是活文件**：當 `20_discovery/` 或 `60_experiments/` 的發現與 PRD（特別是 §3 需求 / §4 成功指標）衝突時，**提出 PRD 修訂及影響，確認範圍或 AC 的變更後再採用**，並在 PRD §8 修訂紀錄留一筆，不要默默忽略發現也不要靜默改 PRD。
-- **寫 prompt 前先填契約**：`40_design/prompts/` 內每個 prompt 檔的 frontmatter 必須能指明它服務哪幾條 acceptance、來自哪份 discovery 的發現、輸入輸出 schema 在哪。填不出來代表上游還沒收斂，回上游補完再寫 prompt。
+- **生產用 prompt 前先填契約**：`40_design/prompts/` 內每個 prompt 檔的 frontmatter 必須能指明它服務哪幾條 acceptance、來自哪份 discovery 的發現、輸入輸出 schema 在哪。這只約束生產用 prompt；探索與釐清可使用實驗 prompt，依已授權探索問題、邊界與完成條件記錄，不要求先有產品 AC。
 
 ## 5. Skill 路由（template-as-glue 模式）
 
