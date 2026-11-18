@@ -9,7 +9,7 @@ updated: 2026-11-18
 - 階段：已公開（2026-11-18）；ipas-learning-hub 同日公開
 - 授權：[MIT](../../LICENSE)
 - 定位：從模糊需求開始、以證據推進的 AI 協作開發方法論與文件模板
-- 驗證：`python tools/validate.py`（連結、frontmatter、圖表），CI 在每個 PR 與 main 執行
+- 驗證：`python tools/validate.py`（連結與錨點、frontmatter、確認日期、validation 證據欄位、圖表）與其單元測試，另有模擬衍生專案初始化的 `init-smoke`；CI 在每個 PR 與 main 執行
 - 真實案例：1 個，[ipas-learning-hub](case-study-ipas.md)（單人＋AI、21 個 PR）
 - 已知限制：沒有多人團隊或其他領域的案例；規則主要靠 AI 遵守與人工審查，不是程式強制
 

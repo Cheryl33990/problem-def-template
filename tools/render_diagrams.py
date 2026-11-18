@@ -180,14 +180,14 @@ TEXT = {
             ("Project records", "The only files created up front: single source of goals and AC; current stage and evidence"),
             ("Templates", "problem · discovery · approach · decisions · design · experiments · testing · closure · meta"),
             ("Reference", "workflow (clarifying) · review (checklist) · conventions (format) · slot_contracts (content)"),
-            ("Checks", "Relative links, frontmatter, diagram freshness; PRs must state the tested commit and what was not verified"),
+            ("Checks", "Links & anchors · frontmatter · confirmed dates · validation evidence · diagram freshness · init-smoke\nPRs must state the tested commit and what was not verified"),
         ],
         "zh-TW": [
             ("入口", "所有 AI 工具共用一份規則；使用者只需描述困擾"),
             ("專案紀錄", "唯一預先建立的紀錄：目標與 AC 的單一來源、目前階段與證據"),
             ("按需範本", "problem · discovery · approach · decisions · design · experiments · testing · closure · meta"),
             ("規則參考", "workflow（釐清流程）· review（審查）· conventions（格式）· slot_contracts（內容契約）"),
-            ("檢查", "相對連結、frontmatter、圖表是否最新；PR 範本要求寫出被測版本與未驗證項目"),
+            ("檢查", "連結與錨點 · frontmatter · 已確認須有日期 · validation 證據欄位 · 圖表是否最新 · init-smoke\nPR 須寫被測版本與未驗證項目"),
         ]},
     "map_foot": {
         "en": "Derived projects can delete docs/about and docs/template-maintenance; nothing else depends on them.",
@@ -312,7 +312,7 @@ def framework_map(theme: str, lang: str) -> str:
     T = tr(lang)
     s = Svg(1150, 540, theme, T("map_title"), T("map_sub"))
     where = ["README · AGENTS.md · docs/workflow/guide.md", "docs/project/brief.md · progress.md",
-             "docs/workflow/templates/", "docs/workflow/reference/", "tools/validate.py · .github/"]
+             "docs/workflow/templates/", "docs/workflow/reference/", "tools/validate.py · tools/test_validate.py · .github/"]
     colors = ["blue", "green", "purple", "gray", "amber"]
     y0, bh, gap = 92, 70, 12
     for i, ((name, what), path, col) in enumerate(zip(T("layers"), where, colors)):
@@ -322,8 +322,11 @@ def framework_map(theme: str, lang: str) -> str:
             f'<rect x="28" y="{y}" width="1094" height="{bh}" rx="10" fill="{fill}" '
             f'stroke="{stroke}" stroke-width="1.2" stroke-opacity="0.55"/>')
         s.box(40, y + 10, 170, bh - 20, name, (), col, title_size=15)
-        s.text(234, y + 30, path, 14, 600, max_width=870)
-        s.text(234, y + 52, what, 13, color=s.t["muted"], max_width=870)
+        lines = what.split("\n")
+        s.text(234, y + (20 if len(lines) > 1 else 30), path, 14, 600, max_width=870)
+        for j, line in enumerate(lines):
+            s.text(234, y + (39 + j * 18 if len(lines) > 1 else 52), line, 13,
+                   color=s.t["muted"], max_width=870)
     s.text(28, 518, T("map_foot"), 12, color=s.t["muted"])
     return s.render()
 

@@ -13,5 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check links, frontmatter and diagrams
+      - name: Test the validator
+        run: python3 -m unittest discover -s tools -p "test_*.py"
+      - name: Check links, anchors, frontmatter, evidence fields and diagrams
+        run: python3 tools/validate.py
+
+  # Simulates guide §1 "移除模板維護材料" and checks the derived project still validates.
+  # Skips itself once docs/template-maintenance is gone (an initialized project); delete it then if you like.
+  init-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove template-only material as a derived project would
+        id: init
+        run: |
+          if [ ! -d docs/template-maintenance ]; then
+            echo "Already initialized; nothing to simulate."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          rm -rf docs/about docs/template-maintenance tools/render_diagrams.py README.zh-TW.md
+          printf '# My project\n\nSee [AGENTS.md](AGENTS.md) and [the guide](docs/workflow/guide.md).\n' > README.md
+      - name: Validate the initialized project
+        if: steps.init.outputs.skip != 'true'
         run: python3 tools/validate.py

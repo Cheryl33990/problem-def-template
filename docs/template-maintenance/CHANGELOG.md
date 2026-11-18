@@ -11,6 +11,14 @@ updated: 2026-11-18
 
 ## [Unreleased]
 
+### 程式檢查擴充
+- validate.py 新增三項檢查：連結錨點是否存在；docs/project 表格中「已確認」須有確認日期；validation 紀錄須有合法判定，判定為通過時須有 commit hash、命令與結果。
+- 新增 tools/test_validate.py（標準函式庫 unittest），CI 先跑單元測試再跑檢查。
+- CI 新增 init-smoke：模擬衍生專案移除 docs/about、docs/template-maintenance 等模板材料後執行 validate.py；已初始化的專案會自動略過。
+- 修正 guide §8 連到 docs/about 的相對連結（初始化後會斷），改為模板 repo 的外部連結；修正 _example.prompt.md 指向不存在的 #ac-01／#ac-04 錨點。
+- validation 範本說明哪些欄位名稱會被程式檢查。
+- 圖表檢查層文字已更新並重新產生全部 16 個 SVG；同步兩語系 README 與圖片替代文字。
+
 ### 公開準備
 - 加入 MIT LICENSE。
 - README 改寫為定位、失敗模式對照、框架地圖與真實案例，分成英文 README.md 與繁體中文 README.zh-TW.md，開頭可切換語言。

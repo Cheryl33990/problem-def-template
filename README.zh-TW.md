@@ -34,7 +34,7 @@ AI 在單一對話裡很有效率，但跨越多輪對話、面對模糊需求�
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/about/assets/framework-map-zh-TW-dark.svg">
-  <img alt="框架地圖，共五層：入口（README、AGENTS、guide）、專案紀錄（brief、progress）、按需範本、規則參考、檢查（validate.py、PR 範本）。" src="docs/about/assets/framework-map-zh-TW-light.svg">
+  <img alt="框架地圖，共五層：入口（README、AGENTS、guide）、專案紀錄（brief、progress）、按需範本、規則參考、檢查（validate.py、test_validate.py、CI 與 PR 範本）：連結與錨點、frontmatter、已確認須有日期、validation 證據欄位、圖表是否最新及 init-smoke；PR 須寫被測版本與未驗證項目。" src="docs/about/assets/framework-map-zh-TW-light.svg">
 </picture>
 
 | 層 | 讀什麼 | 用途 |
@@ -43,7 +43,7 @@ AI 在單一對話裡很有效率，但跨越多輪對話、面對模糊需求�
 | **專案紀錄** | [brief](docs/project/brief.md)、[progress](docs/project/progress.md) | 唯二預先建立的文件：目標與 AC 的單一來源、目前進度與證據 |
 | **按需範本** | [範本庫](docs/workflow/templates/README.md) | PRD、探索、方案比較、ADR、設計、實驗、測試、收尾；遇到需要才複製 |
 | **規則參考** | [workflow](docs/workflow/reference/workflow.md)、[review](docs/workflow/reference/review.md)、[conventions](docs/workflow/reference/conventions.md)、[slot contracts](docs/workflow/reference/slot_contracts.md) | 釐清流程、審查清單、文件格式、各文件的內容要求 |
-| **檢查** | [`tools/validate.py`](tools/validate.py)、[PR 範本](.github/pull_request_template.md) | 連結、frontmatter、圖表是否最新；PR 必須寫被測版本與未驗證項目 |
+| **檢查** | [`tools/validate.py`](tools/validate.py)、[PR 範本](.github/pull_request_template.md) | 連結與錨點、frontmatter、「已確認」須有日期、validation 紀錄的證據欄位、圖表是否最新及 CI init-smoke；PR 必須寫被測版本與未驗證項目 |
 
 ## 真實案例：ipas-learning-hub
 
@@ -100,9 +100,10 @@ src/、tests/              衍生專案的程式與測試位置（目前為空�
 
 ```sh
 python tools/validate.py   # Python 3.9+，沒有第三方套件
+python -m unittest discover -s tools -p "test_*.py"   # 檢查工具的測試
 ```
 
-會檢查所有 Markdown 的相對連結、每份文件的 frontmatter，以及 `docs/about/assets/` 的 SVG 是否與 [`tools/render_diagrams.py`](tools/render_diagrams.py) 產生的內容一致。CI 在每個 PR 執行同一支腳本。
+會檢查相對連結與 Markdown 標題或 HTML ID 錨點、文件 frontmatter、`docs/project/` 成熟度表格的確認日期，以及 `docs/project/validation/` 的判定（通過紀錄須有 commit hash、命令或步驟與結果）。也會檢查 `docs/about/assets/` 的 SVG 是否與 [`tools/render_diagrams.py`](tools/render_diagrams.py) 產生的內容一致。CI 在每個 PR 與推送到 main 時執行單元測試及此腳本，另以 `init-smoke` 工作模擬移除模板材料後的初始化專案並驗證。這些檢查只抓證據欄位缺漏，不判斷內容真偽或被測 commit 是否存在。
 
 目前狀態與公開檢查清單見 [STATUS](docs/about/STATUS.md)；模板維護歷史見[維護入口](docs/template-maintenance/README.md)。
 
