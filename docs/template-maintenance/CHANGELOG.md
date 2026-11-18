@@ -20,6 +20,7 @@ updated: 2026-11-18
 - 依案例中 progress 過長的問題，加入 progress 輪替規則（使用指南 §6、progress、AGENTS §4）。
 - 補上 skill_registry 的 frontmatter，修正 slot_contracts 指向已移除的 AGENTS §5。
 - pilot 填入進行中案例的結果。
+- 2026-11-18 本 repo 與 ipas-learning-hub 轉為 public；STATUS 改為已公開並更新檢查清單。
 
 ### 檔案架構收斂
 - 根目錄收斂為 README、AGENTS 與正常開發目錄；移除工具專屬規則入口。
