@@ -106,7 +106,7 @@ python tools/validate.py   # Python 3.9+, no third-party packages
 
 It checks every relative link in the Markdown files, the frontmatter of each document, and that the SVGs in `docs/about/assets/` match what [`tools/render_diagrams.py`](tools/render_diagrams.py) generates. CI runs the same script on every PR.
 
-Current status and the pre-release checklist are in [STATUS](docs/about/STATUS.md); the template's history is in the [maintenance records](docs/template-maintenance/README.md).
+Current status and the release checklist are in [STATUS](docs/about/STATUS.md); the template's history is in the [maintenance records](docs/template-maintenance/README.md).
 
 ## License
 

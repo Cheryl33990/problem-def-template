@@ -104,7 +104,7 @@ python tools/validate.py   # Python 3.9+，沒有第三方套件
 
 會檢查所有 Markdown 的相對連結、每份文件的 frontmatter，以及 `docs/about/assets/` 的 SVG 是否與 [`tools/render_diagrams.py`](tools/render_diagrams.py) 產生的內容一致。CI 在每個 PR 執行同一支腳本。
 
-目前狀態與公開前檢查清單見 [STATUS](docs/about/STATUS.md)；模板維護歷史見[維護入口](docs/template-maintenance/README.md)。
+目前狀態與公開檢查清單見 [STATUS](docs/about/STATUS.md)；模板維護歷史見[維護入口](docs/template-maintenance/README.md)。
 
 ## 授權
 
