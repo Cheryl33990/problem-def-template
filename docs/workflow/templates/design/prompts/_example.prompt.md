@@ -38,7 +38,7 @@ tags: [prompt, extraction, example]
 ## 1. 目的
 
 從使用者的單句敘述中擷取「動作」與「對象」兩個欄位，輸出合法 JSON。
-服務 [AC-01](../../problem/acceptance.md#ac-01)（擷取核心動詞 + 受詞）與 [AC-04](../../problem/acceptance.md#ac-04)（輸出格式合法）。
+服務 [acceptance](../../problem/acceptance.md) 的 AC-01（擷取核心動詞 + 受詞）與 AC-04（輸出格式合法）。
 
 ---
 

@@ -114,7 +114,7 @@ flowchart TD
 
 讀 brief、progress 及本輪相關文件 → 選一個小目標 → 在工作分支探索或實作 → 保存證據 → 開 PR → review → 合併後更新下一步。
 Issue 可追待辦，PR 保存具體變更；小任務不強制重複填兩份。
-實作前先定測法；資料、工具、環境與當次版本記進結果。未跑或失敗要明寫。測試命令依實際語言與框架設定；本模板只內建文件檢查（`python tools/validate.py`：連結、frontmatter、圖表），沒有應用程式測試。
+實作前先定測法；資料、工具、環境與當次版本記進結果。未跑或失敗要明寫。測試命令依實際語言與框架設定；本模板只內建文件檢查（`python tools/validate.py`：連結與錨點、frontmatter、「已確認」須有確認日期、validation 紀錄的判定與「通過」證據欄位、圖表），沒有應用程式測試。這些檢查只抓缺漏的證據欄位，不判斷內容是否正確。
 
 ## 6．驗證、Review 與收尾
 
@@ -135,4 +135,4 @@ Issue 可追待辦，PR 保存具體變更；小任務不強制重複填兩份�
 ## 8．深入參考與版本更新
 
 [workflow](reference/workflow.md)保存完整釐清流程及階段條件；[conventions](reference/conventions.md)定義文件狀態；[slot contracts](reference/slot_contracts.md)規範需要展開的文件內容。日常從本頁和兩份專案紀錄開始即可。
-記下採用的模板 commit；之後用獨立 PR 挑選方法改進，不整包覆蓋既有專案紀錄或程式。目前只有一個單人＋AI 的真實案例，見 [案例研究](../about/case-study-ipas.md)；多人團隊與其他領域尚未驗證。
+記下採用的模板 commit；之後用獨立 PR 挑選方法改進，不整包覆蓋既有專案紀錄或程式。目前只有一個單人＋AI 的真實案例，見模板 repo 的[案例研究](https://github.com/Cheryl33990/problem-def-template/blob/main/docs/about/case-study-ipas.md)（外部連結，衍生專案移除 docs/about 後仍可開啟）；多人團隊與其他領域尚未驗證。

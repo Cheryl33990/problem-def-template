@@ -36,7 +36,7 @@ AI agents are productive inside one chat. Across many sessions, and when the req
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/about/assets/framework-map-en-dark.svg">
-  <img alt="Framework map with five layers: entry (README, AGENTS, guide), project records (brief, progress), templates, reference rules, and checks (validate.py, PR template)." src="docs/about/assets/framework-map-en-light.svg">
+  <img alt="Framework map with five layers: entry (README, AGENTS, guide), project records (brief, progress), templates, reference rules, and checks (validate.py, test_validate.py, CI and PR template): links and anchors, frontmatter, confirmed dates, validation evidence, diagram freshness and init-smoke; PRs state the tested commit and what was not verified." src="docs/about/assets/framework-map-en-light.svg">
 </picture>
 
 | Layer | Read | Purpose |
@@ -45,7 +45,7 @@ AI agents are productive inside one chat. Across many sessions, and when the req
 | **Project records** | [brief](docs/project/brief.md), [progress](docs/project/progress.md) | The only two files created up front: single source of goals and AC; current progress and evidence |
 | **Templates** | [template library](docs/workflow/templates/README.md) | PRD, discovery, option comparison, ADR, design, experiments, testing, closure. Copy one only when you need it |
 | **Reference** | [workflow](docs/workflow/reference/workflow.md), [review](docs/workflow/reference/review.md), [conventions](docs/workflow/reference/conventions.md), [slot contracts](docs/workflow/reference/slot_contracts.md) | Clarifying process, review checklist, document format, content requirements per document |
-| **Checks** | [`tools/validate.py`](tools/validate.py), [PR template](.github/pull_request_template.md) | Links, frontmatter and diagram freshness; every PR states the tested commit and what was not verified |
+| **Checks** | [`tools/validate.py`](tools/validate.py), [PR template](.github/pull_request_template.md) | Links and anchors, frontmatter, a date on every *confirmed* item, required evidence fields in validation records, diagram freshness and CI init-smoke; every PR states the tested commit and what was not verified |
 
 ## Real case: ipas-learning-hub
 
@@ -102,9 +102,10 @@ src/, tests/               where a derived project's code and tests go (empty he
 
 ```sh
 python tools/validate.py   # Python 3.9+, no third-party packages
+python -m unittest discover -s tools -p "test_*.py"   # tests for the checker
 ```
 
-It checks every relative link in the Markdown files, the frontmatter of each document, and that the SVGs in `docs/about/assets/` match what [`tools/render_diagrams.py`](tools/render_diagrams.py) generates. CI runs the same script on every PR.
+It checks relative links and Markdown heading or HTML ID anchors, document frontmatter, confirmation dates in maturity tables under `docs/project/`, and verdicts in `docs/project/validation/` (passing records require a commit hash, command or steps, and result). It also checks that the SVGs in `docs/about/assets/` match what [`tools/render_diagrams.py`](tools/render_diagrams.py) generates. CI runs the unit tests and this script on every PR and push to main, plus an `init-smoke` job that validates a temporary initialized project after template materials are removed. These checks detect missing evidence fields; they do not verify their truth or whether a recorded commit exists.
 
 Current status and the release checklist are in [STATUS](docs/about/STATUS.md); the template's history is in the [maintenance records](docs/template-maintenance/README.md).
 
