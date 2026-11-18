@@ -10,7 +10,7 @@ tags: [meta, contracts, slots]
 > 本檔是**索引**：把各範本與檔案內 TODO 註解中的「該被填成什麼樣」契約集中起來，供 skill / agent / 本 session 統一參考。
 > 任何 skill 產出的內容，不論來源，都必須通過此處列出的驗收標準。
 >
-> 工具選用原則見 [skill_registry.md](skill_registry.md)；路由規則見 [AGENTS.md §5](../../../AGENTS.md)。
+> 工具選用原則見 [skill_registry.md](skill_registry.md)；AI 共通規則見 [AGENTS.md](../../../AGENTS.md)。
 
 ---
 

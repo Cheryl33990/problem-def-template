@@ -1,12 +1,12 @@
 ---
 title: 模板維護資料
 status: in-review
-updated: 2026-11-16
+updated: 2026-11-18
 ---
 
 # 模板維護資料
 
-本目錄只屬於 problem-def-template 自身，衍生專案可移除。其他工作指南、範本及專案紀錄不依賴此目錄；根 README 的模板維護入口應在初始化時隨專案介紹一起改寫。
+本目錄只屬於 problem-def-template 自身，衍生專案可移除。模板對外的介紹、案例與圖表放在 [docs/about](../about/STATUS.md)。其他工作指南、範本及專案紀錄不依賴此目錄；根 README 的模板維護入口應在初始化時隨專案介紹一起改寫。
 
 - [變更歷史](CHANGELOG.md)
 - [改善進度](improvement_plan.md)
