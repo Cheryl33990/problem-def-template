@@ -15,7 +15,7 @@ updated: 2026-11-16
 
 **既有 repo**：在工作分支加入 docs/workflow，並按需要加入 docs/project。不要覆蓋既有 README、AGENTS、CI、ADR 或程式目錄；將需要的規則整合進原 AGENTS，於 progress 記路徑對照。已有同用途文件就沿用，不再建立副本。
 
-**移除模板維護材料**：docs/template-maintenance 只記模板的歷史、盤點與試跑計畫，不是新專案的成果。新專案可移除整個目錄；同時把根 README 改成自己的介紹，刪掉模板維護入口。指南、規則和空白範本不依賴該目錄。教學 examples 可選擇保留，不是專案待辦。
+**移除模板維護材料**：docs/template-maintenance 只記模板的歷史、盤點與試跑計畫；docs/about 是模板自己的介紹、案例與圖表；兩者都不是新專案的成果。新專案可移除這兩個目錄與 tools/render_diagrams.py；同時把根 README（英文）與 README.zh-TW.md（繁體中文）改成自己的介紹或只留一種語言，刪掉模板入口。指南、規則、空白範本與 tools/validate.py 不依賴它們。教學 examples 可選擇保留，不是專案待辦。
 
 ## 2．先用兩份文件開始
 
@@ -114,7 +114,7 @@ flowchart TD
 
 讀 brief、progress 及本輪相關文件 → 選一個小目標 → 在工作分支探索或實作 → 保存證據 → 開 PR → review → 合併後更新下一步。
 Issue 可追待辦，PR 保存具體變更；小任務不強制重複填兩份。
-實作前先定測法；資料、工具、環境與當次版本記進結果。未跑或失敗要明寫。測試命令依實際語言與框架設定，本模板沒有預裝工具或 CI。
+實作前先定測法；資料、工具、環境與當次版本記進結果。未跑或失敗要明寫。測試命令依實際語言與框架設定；本模板只內建文件檢查（`python tools/validate.py`：連結、frontmatter、圖表），沒有應用程式測試。
 
 ## 6．驗證、Review 與收尾
 
@@ -124,7 +124,7 @@ Issue 可追待辦，PR 保存具體變更；小任務不強制重複填兩份�
 - 驗收：本輪已確認的 AC 是否達成？文件 approved 不等於測試通過。
 - 結案：保存未完成與接受風險，復盤後才簽署；合併不代表部署或整個專案完成。
 
-每次結束更新 progress；不用等專案結案。對已接受需求或門檻的變更先說明影響並確認，不能事後改到「通過」。
+每次結束更新 progress；不用等專案結案。progress 只保留目前狀態與最近幾筆紀錄，超過約 150 行就把較舊的「每次工作結束」紀錄移到 docs/project/log/YYYY-MM.md，在 progress 留連結。對已接受需求或門檻的變更先說明影響並確認，不能事後改到「通過」。
 
 ## 7．給 AI 的起手指令
 
@@ -135,4 +135,4 @@ Issue 可追待辦，PR 保存具體變更；小任務不強制重複填兩份�
 ## 8．深入參考與版本更新
 
 [workflow](reference/workflow.md)保存完整釐清流程及階段條件；[conventions](reference/conventions.md)定義文件狀態；[slot contracts](reference/slot_contracts.md)規範需要展開的文件內容。日常從本頁和兩份專案紀錄開始即可。
-記下採用的模板 commit；之後用獨立 PR 挑選方法改進，不整包覆蓋既有專案紀錄或程式。此流程尚未通過真實案例可用性驗證。
+記下採用的模板 commit；之後用獨立 PR 挑選方法改進，不整包覆蓋既有專案紀錄或程式。目前只有一個單人＋AI 的真實案例，見 [案例研究](../about/case-study-ipas.md)；多人團隊與其他領域尚未驗證。

@@ -1,7 +1,7 @@
 ---
 title: 變更紀錄
 status: approved
-updated: 2026-11-16
+updated: 2026-11-18
 ---
 
 # Changelog
@@ -10,6 +10,16 @@ updated: 2026-11-16
 版本號遵循 [Semantic Versioning](https://semver.org/lang/zh-TW/)。
 
 ## [Unreleased]
+
+### 公開準備
+- 加入 MIT LICENSE。
+- README 改寫為定位、失敗模式對照、框架地圖與真實案例，分成英文 README.md 與繁體中文 README.zh-TW.md，開頭可切換語言。
+- 四張圖各有英文／繁中 × 淺色／深色共 16 個 SVG，由 tools/render_diagrams.py 產生；檢查會抓出過期或多餘的圖。
+- 新增 docs/about：ipas-learning-hub 案例研究、證據對照、目前狀態與公開前檢查清單。
+- 新增 tools/validate.py 與 GitHub Actions：檢查相對連結、frontmatter、圖表是否最新；README 不再使用 frontmatter（GitHub 會把它顯示成表格）。
+- 依案例中 progress 過長的問題，加入 progress 輪替規則（使用指南 §6、progress、AGENTS §4）。
+- 補上 skill_registry 的 frontmatter，修正 slot_contracts 指向已移除的 AGENTS §5。
+- pilot 填入進行中案例的結果。
 
 ### 檔案架構收斂
 - 根目錄收斂為 README、AGENTS 與正常開發目錄；移除工具專屬規則入口。

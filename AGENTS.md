@@ -40,7 +40,8 @@ updated: 2026-11-16
 - 生產 prompt 契約見設計範本；探索 prompt 依已授權疑問與完成條件使用，不要求先有產品 AC。
 - 依 [review 規則](docs/workflow/reference/review.md) 檢查實際 diff 與證據。AI 自查不冒充獨立真人批准。
 - 每輪開始及結束依使用指南的階段表更新 progress 的目前階段、最小產出證據、未達條件、前進判斷與下一個動作；並行任務分別標示。不要用文件數量或 status 代替進度；條件達成且已授權的工作持續執行。
-- 每次工作結束更新 progress；合併、部署、驗收與結案分開記錄。
+- 每次工作結束更新 progress；合併、部署、驗收與結案分開記錄。progress 只留目前狀態，舊紀錄依使用指南移到 docs/project/log。
+- 文件變更後執行 `python tools/validate.py`（連結、frontmatter、圖表）。
 
 ## 5．共通慣例
 文件格式見 [conventions](docs/workflow/reference/conventions.md)，工作流程見 [workflow](docs/workflow/reference/workflow.md)，內容要求見 [slot contracts](docs/workflow/reference/slot_contracts.md)。精簡模式允許合併欄位，未使用範本不納入完成度。
