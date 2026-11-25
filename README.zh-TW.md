@@ -2,9 +2,9 @@
 
 [English](README.md) | **繁體中文**
 
-只要用一句話描述困擾，AI 就能協助你把它收斂成**已確認的範圍、可量測的成功條件和可追溯的驗證結果**。這是一套給 AI 輔助開發用的方法論與文件模板：所有 AI 工具共用同一份 [AGENTS.md](AGENTS.md)，專案一開始只需要兩份紀錄。
+只要用一句話描述困擾，AI 就能協助你把它收斂成**已確認的範圍、可驗證的成功條件和可追溯的驗證結果**。這是一套給 AI 輔助開發用的方法論與文件模板。所有 AI 工具共用同一份 [AGENTS.md](AGENTS.md)，專案一開始只需要兩份紀錄。
 
-[證據對照](docs/about/EVIDENCE.md)列出每個主張寫在哪裡、怎麼執行，以及真實案例中的證據。
+這套流程用清楚的程式入口和可重跑的檢查，減少人工反覆檢查同一類問題的需要。人負責釐清需求歧義、做設計取捨，以及根據證據決定是否合併。詳見[審查與合併規則](docs/workflow/reference/review.md)與[證據對照](docs/about/EVIDENCE.md)。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/about/assets/method-loop-zh-TW-dark.svg">
@@ -22,6 +22,8 @@ AI 在單一對話裡很有效率，但跨越多輪對話、面對模糊需求�
 | 結果不好時，悄悄修改判準讓它通過 | 已確認的 AC 要修改，必須先說明影響並取得確認；原結果保留，回到探索 |
 | 文件寫完或 approved，就被當成功能完成 | 文件 status、測試結果與交付狀態分開記錄 |
 | 很久以前跑過的 passing，被當成現在通過 | 測試結果必須對應被測 commit；未跑、mock、失敗都要寫明 |
+| AI 照抄歷史 workaround，或在呼叫端打補丁 | 找出正常入口與負責該行為的模組，在責任所在處修正共用行為，從受影響的入口驗證 |
+| 審查者一直抓到同一種問題 | 用 API 和模組邊界讓正確做法容易沿用。可明確判定的規則就轉成可重跑的測試或 CI 檢查 |
 | 新的對話忘記先前做到哪裡 | progress 記錄目前階段、證據、未達條件與下一個最小動作，每輪開始與結束都更新 |
 | AI 自己 review，就宣稱已經審查 | AI 自查不冒充獨立的真人批准 |
 
@@ -98,12 +100,18 @@ src/、tests/              衍生專案的程式與測試位置（目前為空�
 
 ## 驗證
 
+### 模板內建檢查
+
 ```sh
 python tools/validate.py   # Python 3.9+，沒有第三方套件
 python -m unittest discover -s tools -p "test_*.py"   # 檢查工具的測試
 ```
 
-會檢查相對連結與 Markdown 標題或 HTML ID 錨點、文件 frontmatter、`docs/project/` 成熟度表格的確認日期，以及 `docs/project/validation/` 的判定（通過紀錄須有 commit hash、命令或步驟與結果）。也會檢查 `docs/about/assets/` 的 SVG 是否與 [`tools/render_diagrams.py`](tools/render_diagrams.py) 產生的內容一致。CI 在每個 PR 與推送到 main 時執行單元測試及此腳本，另以 `init-smoke` 工作模擬移除模板材料後的初始化專案並驗證。這些檢查只抓證據欄位缺漏，不判斷內容真偽或被測 commit 是否存在。
+驗證器檢查相對連結、錨點、frontmatter、確認日期、驗證紀錄的必要證據欄位，以及圖表是否最新。證據檢查涵蓋欄位是否存在及格式。CI 在 PR 與推送到 main 時執行驗證器和它的單元測試，並由 `init-smoke` 檢查移除模板專屬材料後的初始化副本。詳見 [CI 工作流程](.github/workflows/validate.yml)。
+
+### 衍生專案的應用程式驗證
+
+先從正常入口建立可重跑的回歸測試。若輸入組合或事件順序仍有重要風險，先定義必須成立的規則，再選能抓到違規的測法。可用屬性測試探索生成的輸入、Bombadil 探索 UI 操作順序、TLA+ 檢查交錯狀態的模型，或用 Lean 證明有精確規格的性質。模板提供選用條件與證據指引，採用的檢查由各專案自行設定。詳見[測試策略](docs/workflow/templates/testing/test_strategy.md#property-and-formal-verification)。
 
 目前狀態與公開檢查清單見 [STATUS](docs/about/STATUS.md)；模板維護歷史見[維護入口](docs/template-maintenance/README.md)。
 

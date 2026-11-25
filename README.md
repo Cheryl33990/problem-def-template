@@ -2,11 +2,11 @@
 
 **English** | [繁體中文](README.zh-TW.md)
 
-Describe your problem in one sentence, and an AI agent helps you narrow it down to **confirmed scope, measurable success criteria and traceable verification results**. This is a methodology and document template for AI-assisted development. Every AI tool shares one [AGENTS.md](AGENTS.md), and a project starts with only two records.
+Describe your problem in one sentence, and an AI agent helps you narrow it down to **confirmed scope, testable success criteria and traceable verification results**. This is a methodology and document template for AI-assisted development. Every AI tool shares one [AGENTS.md](AGENTS.md), and a project starts with only two records.
 
-The [evidence map](docs/about/EVIDENCE.md) lists each claim, where the rule is written, how it is enforced, and what happened in a real project.
+The workflow aims to reduce repetitive human review by making the intended code path easy to follow and turning recurring findings into checks. People decide ambiguous requirements, design trade-offs and whether the evidence supports merging. See [Review and merge rules](docs/workflow/reference/review.md) and the [evidence map](docs/about/EVIDENCE.md).
 
-> The rules, guide and templates are written in Traditional Chinese. This README and the diagrams are available in both languages; AI agents read the Chinese rules without trouble.
+> The rules, guide and templates are written in Traditional Chinese. The README and diagrams are available in English and Traditional Chinese.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/about/assets/method-loop-en-dark.svg">
@@ -24,6 +24,8 @@ AI agents are productive inside one chat. Across many sessions, and when the req
 | When results disappoint, the criteria quietly change so the work "passes" | Changing a confirmed AC requires stating the impact and getting confirmation. The original result is kept, and the work goes back to exploration |
 | A finished or approved document is treated as a finished feature | Document status, test results and delivery state are recorded separately |
 | A pass from long ago is reported as passing now | Every test result names the commit it ran against. Not run, mocked and failed are written down |
+| The agent copies a legacy workaround or patches a caller | Trace the normal entry point and the module responsible for the behavior. Fix the shared behavior there and verify it through the affected entry points |
+| Reviewers keep finding the same issue | Make the intended behavior easier to implement through APIs and module boundaries. Where the rule is checkable, turn it into a repeatable test or CI check |
 | A new session forgets where the work stopped | progress records the current stage, evidence, unmet exit criteria and the next smallest action, updated at the start and end of every session |
 | The agent reviews its own work and calls it reviewed | AI self-review never stands in for independent human approval |
 
@@ -100,12 +102,18 @@ src/, tests/               where a derived project's code and tests go (empty he
 
 ## Verification
 
+### Built-in template checks
+
 ```sh
 python tools/validate.py   # Python 3.9+, no third-party packages
 python -m unittest discover -s tools -p "test_*.py"   # tests for the checker
 ```
 
-It checks relative links and Markdown heading or HTML ID anchors, document frontmatter, confirmation dates in maturity tables under `docs/project/`, and verdicts in `docs/project/validation/` (passing records require a commit hash, command or steps, and result). It also checks that the SVGs in `docs/about/assets/` match what [`tools/render_diagrams.py`](tools/render_diagrams.py) generates. CI runs the unit tests and this script on every PR and push to main, plus an `init-smoke` job that validates a temporary initialized project after template materials are removed. These checks detect missing evidence fields; they do not verify their truth or whether a recorded commit exists.
+The validator checks relative links, anchors, frontmatter, confirmation dates, required validation evidence fields, and diagram freshness. Evidence checks verify field presence and format. CI runs the validator and its unit tests on PRs and pushes to main. The `init-smoke` job checks an initialized copy after removing template-only material. See the [CI workflow](.github/workflows/validate.yml).
+
+### Verification for your application
+
+Start with a repeatable regression test at the normal entry point. When input combinations or event order leave significant risk, define a rule that must hold and choose a method that can detect its violation. Options include property-based testing for generated inputs, Bombadil for UI action sequences, TLA+ model checking for interacting states, and Lean for proving a precisely specified property. The template provides selection criteria and evidence guidance. Each project configures the checks it adopts. See the [testing strategy](docs/workflow/templates/testing/test_strategy.md#property-and-formal-verification).
 
 Current status and the release checklist are in [STATUS](docs/about/STATUS.md); the template's history is in the [maintenance records](docs/template-maintenance/README.md).
 

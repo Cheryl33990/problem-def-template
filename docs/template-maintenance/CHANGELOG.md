@@ -1,7 +1,7 @@
 ---
 title: 變更紀錄
 status: approved
-updated: 2026-11-18
+updated: 2026-11-25
 ---
 
 # Changelog
@@ -10,6 +10,12 @@ updated: 2026-11-18
 版本號遵循 [Semantic Versioning](https://semver.org/lang/zh-TW/)。
 
 ## [Unreleased]
+
+### AI 變更品質
+
+- 在既有工作階段加入正常入口與模組責任、回歸案例的前後驗證，以及重複審查發現如何回饋到程式結構或自動檢查。
+- 補充程式屬性測試、UI 探索、模型檢查及形式化證明的選用條件，以及可重跑的證據與合併門檻判準。
+- 英文與繁中 README 同步說明程式責任、自動檢查與人工取捨，以及內建文件 CI 和衍生專案的驗證選項。
 
 ### 程式檢查擴充
 - validate.py 新增三項檢查：連結錨點是否存在；docs/project 表格中「已確認」須有確認日期；validation 紀錄須有合法判定，判定為通過時須有 commit hash、命令與結果。
