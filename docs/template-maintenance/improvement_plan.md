@@ -1,24 +1,24 @@
 ---
 title: 模板改善進度
 status: in-review
-updated: 2026-11-25
+updated: 2026-11-27
 ---
 
 # 模板改善進度
 
 PR #1、#2 已合併。問題釐清、文件流程與 review 基礎已建立。
 本輪將程式、專案紀錄與工作指南分區，根目錄只留 README 與 AGENTS 作文字入口；空白範本按需取用，另保存遷移與檢查紀錄。
-PR #3 尚未合併，本輪納入其實驗狀態、prompt 契約及追溯欄位修正；不需再套用舊位置的重複修改。
+PR #3 已合併（整合紀錄見 [layout_review](layout_review.md)），其實驗狀態、prompt 契約及追溯欄位修正已納入；不需再套用舊位置的重複修改。PR #4–#10 也已合併。
 進行中案例 ipas-learning-hub 已完成（見 [pilot](pilot.md) 與[案例研究](../about/case-study-ipas.md)）；回放案例、一週後接手與時間量測仍未做。
 公開準備：加入 MIT 授權、README 圖表與案例、證據對照與狀態頁、文件檢查 CI（連結與錨點、frontmatter、已確認須有日期、validation 判定與證據欄位、圖表）、單元測試與 init-smoke，以及 progress 輪替規則。部署不適用。
 
-## 目前階段與前進判斷（2026-11-25）
+## 目前階段與前進判斷（2026-11-25；2026-11-27 補合併結果）
 
 | 任務／範圍 | 目前階段 | 最小產出／證據 | 未達條件／限制 | 前進判斷 | 下一個動作 |
 |---|---|---|---|---|---|
-| 降低 AI 變更的重複人工審查 | 審查與交付 | 使用者 2026-11-25 授權第一版方法論與單案試跑。指南、測試策略與審查規則已更新。錨點歷史回放、當版文件與初始化副本驗證通過，見下方紀錄 | 尚無審查工時、再發或程式架構案例的基準。遠端 CI 未跑，合併待負責人決定 | 可送審，單案支持自動攔截這類錯誤 | 下一個實際程式 PR 記錄介入原因與工時，並檢查正常入口與模組責任是否能減少繞路 |
-| 納入形式化驗證與 UI 屬性測試的選用方法 | 審查與交付 | 使用者 2026-11-25 授權補入方法論。[測試策略](../workflow/templates/testing/test_strategy.md#property-and-formal-verification)已加入選用條件、限量試跑及合併門檻，[審查規則](../workflow/reference/review.md)與[驗證範本](../workflow/templates/testing/validation/TEMPLATE.md)已同步 | 工具與案例未試跑，人工介入與維護成本待測 | 文件可送審，工具採用待實際案例提供證據 | iPAS 候選起點是驗證引用 ID 規則，出現 UI 時序風險時再評估 Bombadil |
-| 同步專案 README 與方法論交付 | 審查與交付 | [英文 README](../../README.md)與[繁中 README](../../README.zh-TW.md)已同步。使用者於 2026-11-25 授權提交、開 PR、合併及刪除工作分支。`origin/main` 已包含 PR #9 的驗證器更新，本輪 PR 集中在方法論與 README | 新 PR 的遠端 CI 與合併結果由 GitHub PR 紀錄追蹤。新增工具的專案試跑仍待執行，部署不適用 | 本機驗證通過，可提交送審 | PR 檢查通過後合併至 `main`，確認結果並移除工作分支 |
+| 降低 AI 變更的重複人工審查 | 審查與交付 | 使用者 2026-11-25 授權第一版方法論與單案試跑。指南、測試策略與審查規則已更新。錨點歷史回放、當版文件與初始化副本驗證通過，見下方紀錄 | 尚無審查工時、再發或程式架構案例的基準 | 已隨 PR #10 合併（2026-11-25，遠端 CI `docs`、`init-smoke` 通過）；單案支持自動攔截這類錯誤 | 下一個實際程式 PR 記錄介入原因與工時，並檢查正常入口與模組責任是否能減少繞路 |
+| 納入形式化驗證與 UI 屬性測試的選用方法 | 審查與交付 | 使用者 2026-11-25 授權補入方法論。[測試策略](../workflow/templates/testing/test_strategy.md#property-and-formal-verification)已加入選用條件、限量試跑及合併門檻，[審查規則](../workflow/reference/review.md)與[驗證範本](../workflow/templates/testing/validation/TEMPLATE.md)已同步 | 工具與案例未試跑，人工介入與維護成本待測 | 文件已隨 PR #10 合併；工具採用待實際案例提供證據 | iPAS 候選起點是驗證引用 ID 規則，出現 UI 時序風險時再評估 Bombadil |
+| 同步專案 README 與方法論交付 | 審查與交付 | [英文 README](../../README.md)與[繁中 README](../../README.zh-TW.md)已同步。使用者於 2026-11-25 授權提交、開 PR、合併及刪除工作分支。`origin/main` 已包含 PR #9 的驗證器更新，本輪 PR 集中在方法論與 README | 新增工具的專案試跑仍待執行，部署不適用 | 已隨 PR #10 合併（2026-11-25，遠端 CI 通過） | 無；後續變更另開一輪 |
 
 本輪驗證基底為 `eb14341` 加目前工作目錄差異。`python tools/validate.py` 檢查 50 份 Markdown，`python -m unittest discover -s tools -p "test_*.py"` 執行 23 項驗證器測試，依 `init-smoke` 模擬的初始化副本檢查 40 份 Markdown，`git diff --check` 通過。AI 自查對照四種方法的例子與證據限制，並參照 [Bombadil 重跑說明](https://antithesishq.github.io/bombadil/browser/4.1-reproducing-violations.html)、[TLA+ 工具](https://lamport.azurewebsites.net/tla/tools.html)、[Lean](https://lean-lang.org/)與 [iPAS 架構](https://github.com/Cheryl33990/ipas-learning-hub#architecture)。結果涵蓋方法論文件與模板的現有檢查，尚無新增工具的執行證據。
 

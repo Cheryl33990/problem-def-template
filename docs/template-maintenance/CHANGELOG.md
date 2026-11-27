@@ -1,7 +1,7 @@
 ---
 title: 變更紀錄
 status: approved
-updated: 2026-11-25
+updated: 2026-11-27
 ---
 
 # Changelog
@@ -10,6 +10,12 @@ updated: 2026-11-25
 版本號遵循 [Semantic Versioning](https://semver.org/lang/zh-TW/)。
 
 ## [Unreleased]
+
+### 過期紀錄與用詞修正
+- improvement_plan 的「PR #3 尚未合併」與 layout_review 矛盾，改為已合併；PR #10 三列的前進判斷補上 2026-11-25 合併與遠端 CI 結果。
+- 案例研究與兩版 README 註明案例數字是 ipas-learning-hub `5891f4c` 的快照，並連到其現況（52 個 PR、RAG 可觀測介面、248 題補充集）。
+- STATUS 補上 PR #10 的方法論更新，以及這些工具尚無試跑證據。
+- workflow、conventions、slot_contracts 與 PRD 範本把舊稱「work log」「WORKFLOW」「REVIEW」改為 progress、workflow 與 review 規則；工作循環第 1、7 步改為以 brief 為主來源，PRD／AC 只在拆出時引用。
 
 ### AI 變更品質
 

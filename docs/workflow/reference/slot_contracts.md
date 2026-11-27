@@ -1,7 +1,7 @@
 ---
 title: Slot Contracts — 各 SOP 文件的填補契約
 status: draft
-updated: 2026-11-16
+updated: 2026-11-27
 tags: [meta, contracts, slots]
 ---
 
@@ -16,7 +16,7 @@ tags: [meta, contracts, slots]
 
 精簡案例依 [使用指南](../guide.md) 可合併欄位並列出 N/A 理由；以下為展開獨立文件時的契約。
 
-流程與狀態見 [WORKFLOW](workflow.md)，審查見 [REVIEW](review.md)。模板文件不代表自動化已安裝。
+流程與狀態見 [workflow](workflow.md)，審查見 [review 規則](review.md)。模板文件不代表自動化已安裝。
 
 本頁連結指向可參考的空白範本，不能在範本中填入專案內容。起始 brief 可涵蓋 PRD／AC 等要求；只有採用獨立文件時才使用對應詳細契約。下列 docs/project 路徑是建議目的地，尚未預建。
 
@@ -34,7 +34,7 @@ tags: [meta, contracts, slots]
 
 ## 1. `docs/project/problem/` — 問題定義
 
-以下完整性要求是正式實作前對本輪適用內容的要求，不是使用者開始對話的門檻。探索期允許未知與暫定；AI 依 [WORKFLOW](workflow.md) 協助形成定義，使用者不需先填表。未知不是 N/A。
+以下完整性要求是正式實作前對本輪適用內容的要求，不是使用者開始對話的門檻。探索期允許未知與暫定；AI 依 [workflow](workflow.md) 協助形成定義，使用者不需先填表。未知不是 N/A。
 
 ### 1.1 `PRD.md`
 

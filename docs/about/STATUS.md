@@ -1,16 +1,16 @@
 ---
 title: 目前狀態
 status: in-review
-updated: 2026-11-18
+updated: 2026-11-27
 ---
 
 # 目前狀態
 
-- 階段：已公開（2026-11-18）；ipas-learning-hub 同日公開
+- 階段：已公開（2026-11-18）；ipas-learning-hub 同日公開。2026-11-25 PR #10 加入程式變更的正常入口與模組責任規則，以及屬性測試、UI 探索、模型檢查、形式化證明的選用條件（[測試策略](../workflow/templates/testing/test_strategy.md#property-and-formal-verification)）；這些工具尚無專案試跑證據
 - 授權：[MIT](../../LICENSE)
 - 定位：從模糊需求開始、以證據推進的 AI 協作開發方法論與文件模板
 - 驗證：`python tools/validate.py`（連結與錨點、frontmatter、確認日期、validation 證據欄位、圖表）與其單元測試，另有模擬衍生專案初始化的 `init-smoke`；CI 在每個 PR 與 main 執行
-- 真實案例：1 個，[ipas-learning-hub](case-study-ipas.md)（單人＋AI、21 個 PR）
+- 真實案例：1 個，[ipas-learning-hub](case-study-ipas.md)（單人＋AI；案例證據固定在 `5891f4c` 的 21 個 PR，專案之後持續開發）
 - 已知限制：沒有多人團隊或其他領域的案例；規則主要靠 AI 遵守與人工審查，不是程式強制
 
 ## 公開檢查清單
