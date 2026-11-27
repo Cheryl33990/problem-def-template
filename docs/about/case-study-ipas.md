@@ -1,7 +1,7 @@
 ---
 title: 案例研究：ipas-learning-hub
 status: in-review
-updated: 2026-11-18
+updated: 2026-11-27
 ---
 
 # 案例研究：ipas-learning-hub
@@ -9,6 +9,8 @@ updated: 2026-11-18
 本模板第一個、也是目前唯一一個真實使用案例。作者一人搭配 AI 編碼工具（commit 紀錄中為 Claude Code），從一句模糊的困擾開始，三天內做出一個可引用來源的本機 RAG 系統，共 21 個 PR。
 
 以下所有連結都固定在 ipas-learning-hub 的 commit [`5891f4c`](https://github.com/Cheryl33990/ipas-learning-hub/tree/5891f4c)，之後的修改不影響這裡的引用。
+
+> 本頁是 `5891f4c` 當時的快照。ipas-learning-hub 之後持續開發：截至 2026-11-27 已合併 52 個 PR，新增 FastAPI 後端與 React 可觀測介面（文件、檢索除錯、評估、對話頁），評估預設改用 248 題補充集。這些後續成果不屬於本頁的案例證據，現況見 [ipas-learning-hub README](https://github.com/Cheryl33990/ipas-learning-hub#readme)。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/case-ipas-zh-TW-dark.svg">

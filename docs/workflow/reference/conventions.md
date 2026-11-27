@@ -1,7 +1,7 @@
 ---
 title: 專案文件慣例
 status: in-review
-updated: 2026-11-16
+updated: 2026-11-27
 ---
 
 # 專案文件慣例
@@ -10,7 +10,7 @@ updated: 2026-11-16
 
 Markdown frontmatter 必填 title、status、updated（YYYY-MM-DD）；owner、tags、related 可選。GitHub 提供的設定格式若不支援 frontmatter，依平台格式，不硬塞 YAML。
 文件狀態：draft 草擬／in-review 待審／approved 已採用／archived 封存／deprecated 被取代。狀態不是大小排序，不使用「≥ in-review」作判斷。
-範本可保留 draft 與 TODO，說明文件可為 in-review；不要將未使用範本視為交付缺失。任務進度另見 work log，測試結果另見 validation。
+範本可保留 draft 與 TODO，說明文件可為 in-review；不要將未使用範本視為交付缺失。任務進度另見 progress，測試結果另見 validation。
 
 ## 命名與連結
 
@@ -19,7 +19,7 @@ Markdown frontmatter 必填 title、status、updated（YYYY-MM-DD）；owner、t
 
 ## 內容與術語
 
-PRD 定義問題，AC 定義完成標準，測試規格定義測法，validation 記實際結果。完整流程見 [WORKFLOW](workflow.md)；單份文件契約見 [slot_contracts](slot_contracts.md)。
+PRD 定義問題，AC 定義完成標準，測試規格定義測法，validation 記實際結果。完整流程見 [workflow](workflow.md)；單份文件契約見 [slot_contracts](slot_contracts.md)。
 新術語先在 brief 說明，需要獨立管理時才建立 glossary，首次出現說明縮寫。事實附來源，假設明確標示，不足證據寫未知。
 
 ## 變更管理
@@ -32,4 +32,4 @@ PRD 定義問題，AC 定義完成標準，測試規格定義測法，validation
 ## 裁剪與衝突
 
 精簡模式可合併文件，但保留問題、AC、證據與決策鏈。N/A 填理由與確認人；適用但未做的工作標未完成。
-流程以 WORKFLOW 為準、review 以 REVIEW 為準、內容以 slot_contracts 為準，guide 是操作入口。發現衝突先列出差異並修文件，不靜默挑有利條款。使用者已明確授權的範圍優先。
+流程以 workflow.md 為準、審查以 review.md 為準、內容以 slot_contracts 為準，guide 是操作入口。發現衝突先列出差異並修文件，不靜默挑有利條款。使用者已明確授權的範圍優先。

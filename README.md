@@ -65,7 +65,7 @@ The author used this template to go from one sentence — "I can't tell which an
 | Accept on data the system has not seen | 243 held-out exam questions: hybrid retrieval 87.2%, 5.3 points above BM25 (95% CI +1.7 to +9.0) |
 | A correct choice is not proof of correct reasoning | Manual sample of 20: reasoning correct 20/20, citations fully supportive 18/20. The record states the reviewer was the author, not an independent third party |
 
-The full story, which templates were actually used and what did not work well is in the [case study](docs/about/case-study-ipas.md) (Traditional Chinese).
+The full story, which templates were actually used and what did not work well is in the [case study](docs/about/case-study-ipas.md) (Traditional Chinese). These figures are a snapshot at commit `5891f4c`; ipas-learning-hub has kept growing since (52 PRs as of 2026-11-27, including a RAG observability UI). See its [README](https://github.com/Cheryl33990/ipas-learning-hub#readme) for the current state.
 
 ## Getting started
 
